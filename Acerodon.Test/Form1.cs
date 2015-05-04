@@ -1,4 +1,6 @@
-﻿using Acerodon.Test.AcerodonService;
+﻿using Acerodon.GenericDataContract.Types;
+using Acerodon.Model;
+using Acerodon.Test.ServiceReference1;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -20,20 +22,9 @@ namespace Acerodon.Test
 
         private void button1_Click(object sender, EventArgs e)
         {
-            DataServiceClient dsc = new DataServiceClient();
+            
 
-            dsc.AddCustomer(
-                new Customer()
-                {
 
-                    Name = "SystemTest",
-                    CreatedBy = 0,
-                    ModifiedBy = 0,
-                    CreatedDate = DateTime.Now,
-                    ModifiedDate = DateTime.Now,
-                    IsActive = true
-
-                });
         }
     }
 }

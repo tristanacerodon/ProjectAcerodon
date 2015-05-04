@@ -58,6 +58,7 @@
     <Compile Include="AddCompany.xaml.cs">
       <DependentUpon>AddCompany.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Helper\Command.cs" />
     <Compile Include="Service References\AcerodonService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -65,9 +66,8 @@
     </Compile>
     <Compile Include="ViewModel\CompanyGridViewModel.cs" />
     <Compile Include="ViewModel\Interface\GridViewModel.cs" />
-    <Compile Include="ViewModel\Interface\IGenericGridView.cs" />
-    <Compile Include="ViewModel\Interface\IGridViewModel.cs" />
     <Compile Include="Helper\Extensions.cs" />
+    <Compile Include="ViewModel\Interface\IGridViewModel.cs" />
     <Page Include="AddCompany.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -86,31 +86,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Properties\AssemblyInfo.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Properties\Settings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Settings.settings</DependentUpon>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-    </Compile>
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
+    <None Include="Properties\DataSources\Acerodon.GenericDataContract.Types.AcerodonDataContract.datasource" />
     <AppDesigner Include="Properties\" />
-    <None Include="Service References\AcerodonService\Acerodon.App.AcerodonService.Company.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
     <None Include="Service References\AcerodonService\DataService.wsdl" />
     <None Include="Service References\AcerodonService\DataService.xsd">
       <SubType>Designer</SubType>
@@ -119,6 +96,18 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\AcerodonService\DataService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AcerodonService\DataService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AcerodonService\DataService31.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AcerodonService\DataService32.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AcerodonService\DataService4.xsd">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
@@ -141,13 +130,20 @@
     <None Include="Service References\AcerodonService\configuration.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\AcerodonService\DataService3.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Service References\AcerodonService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Acerodon.GenericDataContract.Types\Acerodon.GenericDataContract.Types.csproj">
+      <Project>{96ec24c1-b129-46ae-9729-54e847cc026c}</Project>
+      <Name>Acerodon.GenericDataContract.Types</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Acerodon.Model\Acerodon.Model.csproj">
+      <Project>{710aaa3c-e902-499a-880a-0e9e73b354a1}</Project>
+      <Name>Acerodon.Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

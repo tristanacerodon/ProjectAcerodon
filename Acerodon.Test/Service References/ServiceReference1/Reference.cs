@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Acerodon.App.AcerodonService {
+namespace Acerodon.Test.ServiceReference1 {
     using System.Runtime.Serialization;
     using System;
     
@@ -23,7 +23,7 @@ namespace Acerodon.App.AcerodonService {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private Acerodon.App.AcerodonService.Filter[] FiltersField;
+        private Acerodon.Test.ServiceReference1.Filter[] FiltersField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int PageField;
@@ -32,7 +32,7 @@ namespace Acerodon.App.AcerodonService {
         private int RowsField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private Acerodon.App.AcerodonService.Sort[] SortsField;
+        private Acerodon.Test.ServiceReference1.Sort[] SortsField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -45,7 +45,7 @@ namespace Acerodon.App.AcerodonService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public Acerodon.App.AcerodonService.Filter[] Filters {
+        public Acerodon.Test.ServiceReference1.Filter[] Filters {
             get {
                 return this.FiltersField;
             }
@@ -84,7 +84,7 @@ namespace Acerodon.App.AcerodonService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public Acerodon.App.AcerodonService.Sort[] Sorts {
+        public Acerodon.Test.ServiceReference1.Sort[] Sorts {
             get {
                 return this.SortsField;
             }
@@ -180,7 +180,7 @@ namespace Acerodon.App.AcerodonService {
         private string FieldField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private Acerodon.App.AcerodonService.Sort.SortOrder OrderField;
+        private Acerodon.Test.ServiceReference1.Sort.SortOrder OrderField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -206,7 +206,7 @@ namespace Acerodon.App.AcerodonService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public Acerodon.App.AcerodonService.Sort.SortOrder Order {
+        public Acerodon.Test.ServiceReference1.Sort.SortOrder Order {
             get {
                 return this.OrderField;
             }
@@ -240,7 +240,7 @@ namespace Acerodon.App.AcerodonService {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="AcerodonService.DataService")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference1.DataService")]
     public interface DataService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/DataService/Get", ReplyAction="http://tempuri.org/DataService/GetResponse")]
@@ -248,25 +248,25 @@ namespace Acerodon.App.AcerodonService {
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Acerodon.Model.Interface.IEntity))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(object[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Acerodon.Model.Company))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Acerodon.App.AcerodonService.Query))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Acerodon.App.AcerodonService.Filter[]))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Acerodon.App.AcerodonService.Filter))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Acerodon.App.AcerodonService.Sort[]))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Acerodon.App.AcerodonService.Sort))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Acerodon.App.AcerodonService.Sort.SortOrder))]
-        Acerodon.GenericDataContract.Types.AcerodonDataContract Get(Acerodon.GenericDataContract.Types.AcerodonDataContract contract, Acerodon.App.AcerodonService.Query query);
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Acerodon.Test.ServiceReference1.Query))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Acerodon.Test.ServiceReference1.Filter[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Acerodon.Test.ServiceReference1.Filter))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Acerodon.Test.ServiceReference1.Sort[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Acerodon.Test.ServiceReference1.Sort))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Acerodon.Test.ServiceReference1.Sort.SortOrder))]
+        Acerodon.GenericDataContract.Types.AcerodonDataContract Get(Acerodon.GenericDataContract.Types.AcerodonDataContract contract, Acerodon.Test.ServiceReference1.Query query);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/DataService/Get", ReplyAction="http://tempuri.org/DataService/GetResponse")]
-        System.Threading.Tasks.Task<Acerodon.GenericDataContract.Types.AcerodonDataContract> GetAsync(Acerodon.GenericDataContract.Types.AcerodonDataContract contract, Acerodon.App.AcerodonService.Query query);
+        System.Threading.Tasks.Task<Acerodon.GenericDataContract.Types.AcerodonDataContract> GetAsync(Acerodon.GenericDataContract.Types.AcerodonDataContract contract, Acerodon.Test.ServiceReference1.Query query);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface DataServiceChannel : Acerodon.App.AcerodonService.DataService, System.ServiceModel.IClientChannel {
+    public interface DataServiceChannel : Acerodon.Test.ServiceReference1.DataService, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class DataServiceClient : System.ServiceModel.ClientBase<Acerodon.App.AcerodonService.DataService>, Acerodon.App.AcerodonService.DataService {
+    public partial class DataServiceClient : System.ServiceModel.ClientBase<Acerodon.Test.ServiceReference1.DataService>, Acerodon.Test.ServiceReference1.DataService {
         
         public DataServiceClient() {
         }
@@ -287,11 +287,11 @@ namespace Acerodon.App.AcerodonService {
                 base(binding, remoteAddress) {
         }
         
-        public Acerodon.GenericDataContract.Types.AcerodonDataContract Get(Acerodon.GenericDataContract.Types.AcerodonDataContract contract, Acerodon.App.AcerodonService.Query query) {
+        public Acerodon.GenericDataContract.Types.AcerodonDataContract Get(Acerodon.GenericDataContract.Types.AcerodonDataContract contract, Acerodon.Test.ServiceReference1.Query query) {
             return base.Channel.Get(contract, query);
         }
         
-        public System.Threading.Tasks.Task<Acerodon.GenericDataContract.Types.AcerodonDataContract> GetAsync(Acerodon.GenericDataContract.Types.AcerodonDataContract contract, Acerodon.App.AcerodonService.Query query) {
+        public System.Threading.Tasks.Task<Acerodon.GenericDataContract.Types.AcerodonDataContract> GetAsync(Acerodon.GenericDataContract.Types.AcerodonDataContract contract, Acerodon.Test.ServiceReference1.Query query) {
             return base.Channel.GetAsync(contract, query);
         }
     }

@@ -1,52 +1,45 @@
-﻿using Acerodon.Model;
+﻿using Acerodon.GenericDataContract.Types;
 using Acerodon.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.Serialization;
+using System.Reflection;
+using Acerodon.Model;
+using Acerodon.Model.Interface;
 using System.ServiceModel;
-using System.Text;
 
 namespace Acerodon.Service
 {
     [ServiceContract]
     public class DataService
     {
-
-        ProjectContext db = new ProjectContext();
-        
-        #region Company
+        ProjectContext context = new ProjectContext();
 
         [OperationContract]
-        public IEnumerable<Company> GetCompanies(Query query)
+        public AcerodonDataContract Get(AcerodonDataContract contract, Query query)
         {
-
-            GenericEntity<Company> Companies = new GenericEntity<Company>(db);
-            return Companies.GetAll();
-
+            Fill(contract, query);
+            return contract;
         }
 
-        [OperationContract]
-        public Company GetCompanyById(int Id)
+        private void Fill(AcerodonDataContract contract, Query query)
         {
+            Assembly a = Assembly.GetAssembly(typeof(IEntity));
+            Type type = (from t in a.GetTypes()
+                         where t.Name == contract.TypeName
+                         select t).First();
 
-            GenericEntity<Company> Companies = new GenericEntity<Company>(db);
-            return Companies.Get(Id);
+            MethodInfo method = typeof(GenericEntity).GetMethod("CreateInstance",
+                              BindingFlags.Public | BindingFlags.Static);
+
+            method = method.MakeGenericMethod(type);
+
+            dynamic obj = method.Invoke(null, new object[] { context });
+
+            contract.ItemList = new List<object>(obj.Get(query));
+
 
         }
-
-        #endregion
-
-
-        #region Customer
-        [OperationContract]
-        public bool AddCustomer(Customer customer)
-        {
-
-            GenericEntity<Customer> Customers = new GenericEntity<Customer>(db);
-            return Customers.Add(customer);
-
-        }
-        #endregion
     }
+
 }

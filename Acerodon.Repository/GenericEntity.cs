@@ -9,7 +9,17 @@ using System.Threading.Tasks;
 
 namespace Acerodon.Repository
 {
-    public class GenericEntity<T>   
+
+    public static class GenericEntity
+    {
+        public static GenericEntity<T> CreateInstance<T>(ProjectContext db)
+            where T : IEntity, new()
+        {
+            return new GenericEntity<T>(db);
+        }
+    }
+
+    public class GenericEntity<T>
         where T : IEntity, new()  
     {
 
@@ -20,30 +30,10 @@ namespace Acerodon.Repository
             this.db = db;
         }
 
-
-        public DbSet<T> GetAll()
+        public IEnumerable<T> Get(Query query)
         {
-            return db.Set<T>();
+            return db.Set<T>().OrderBy(o => o.Id).Skip(query.Skip).Take(query.Rows);
         }
-
-
-        public T Get(int Id)
-        {
-            return db.Set<T>().Find(Id);
-        }
-
-        public bool Add(T customer)
-        {
-            try
-            {
-                db.Set<T>().Add(customer);
-                db.SaveChanges();
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
-        }
+        
     }
 }
