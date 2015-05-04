@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Acerodon.Model
+namespace Acerodon.Model.Interface
 {
-    public class BaseClass
+    public abstract class IEntity
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
 
         public int CreatedBy { get; set; }
         public DateTime CreatedDate { get; set; }

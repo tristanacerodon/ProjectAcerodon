@@ -53,6 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GenericEntity.cs" />
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ProjectContext.cs" />
   </ItemGroup>
   <ItemGroup>

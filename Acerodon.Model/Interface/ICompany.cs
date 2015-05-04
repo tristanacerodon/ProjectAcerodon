@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Acerodon.App.Utility
+namespace Acerodon.Model.Interface
 {
-    class DataServiceQuery
+    public abstract class ICompany : IEntity
     {
+        public string Name { get; set; }
 
     }
 }

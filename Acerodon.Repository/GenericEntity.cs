@@ -1,4 +1,5 @@
 ﻿using Acerodon.Model;
+using Acerodon.Model.Interface;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 namespace Acerodon.Repository
 {
     public class GenericEntity<T>   
-        where T : BaseClass, new()  
+        where T : IEntity, new()  
     {
 
         public ProjectContext db;
@@ -29,6 +30,20 @@ namespace Acerodon.Repository
         public T Get(int Id)
         {
             return db.Set<T>().Find(Id);
+        }
+
+        public bool Add(T customer)
+        {
+            try
+            {
+                db.Set<T>().Add(customer);
+                db.SaveChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
     }
 }

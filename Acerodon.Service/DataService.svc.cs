@@ -15,6 +15,8 @@ namespace Acerodon.Service
 
         ProjectContext db = new ProjectContext();
         
+        #region Company
+
         [OperationContract]
         public IEnumerable<Company> GetCompanies(Query query)
         {
@@ -23,6 +25,7 @@ namespace Acerodon.Service
             return Companies.GetAll();
 
         }
+
         [OperationContract]
         public Company GetCompanyById(int Id)
         {
@@ -31,5 +34,19 @@ namespace Acerodon.Service
             return Companies.Get(Id);
 
         }
+
+        #endregion
+
+
+        #region Customer
+        [OperationContract]
+        public bool AddCustomer(Customer customer)
+        {
+
+            GenericEntity<Customer> Customers = new GenericEntity<Customer>(db);
+            return Customers.Add(customer);
+
+        }
+        #endregion
     }
 }

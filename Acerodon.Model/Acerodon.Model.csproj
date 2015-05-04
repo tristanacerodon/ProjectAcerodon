@@ -31,8 +31,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="CompanyCustomer.cs" />
+    <Compile Include="Interface\ICompany.cs" />
     <Compile Include="Company.cs" />
-    <Compile Include="BaseClass.cs" />
+    <Compile Include="Interface\IEntity.cs" />
+    <Compile Include="Customer.cs" />
+    <Compile Include="Project.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram1.cd" />
