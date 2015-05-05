@@ -3,9 +3,9 @@ using Acerodon.Model;
 
 namespace Acerodon.App.ViewModel
 {
-    class CustomerGridViewModel : GridViewModel<Company>
+    class CompanyGridViewModel : GridViewModel<Company>
     {
-        public CustomerGridViewModel()
+        public CompanyGridViewModel()
         {
             EntryForm = new AddCompany();
         }    
