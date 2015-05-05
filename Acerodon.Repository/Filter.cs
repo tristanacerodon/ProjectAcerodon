@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Acerodon.Service
+namespace Acerodon.Repository
 {
     public class Filter
     {

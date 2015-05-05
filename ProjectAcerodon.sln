@@ -26,6 +26,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Acerodon.Test", "Acerodon.T
 		{9F5C0439-F849-4320-94AC-1E3CC745824E} = {9F5C0439-F849-4320-94AC-1E3CC745824E}
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Acerodon.GenericDataContract.Types", "Acerodon.GenericDataContract.Types\Acerodon.GenericDataContract.Types.csproj", "{96EC24C1-B129-46AE-9729-54E847CC026C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -52,6 +54,10 @@ Global
 		{0F2039CE-6AE3-4C2F-A664-EE5060863343}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0F2039CE-6AE3-4C2F-A664-EE5060863343}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0F2039CE-6AE3-4C2F-A664-EE5060863343}.Release|Any CPU.Build.0 = Release|Any CPU
+		{96EC24C1-B129-46AE-9729-54E847CC026C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{96EC24C1-B129-46AE-9729-54E847CC026C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{96EC24C1-B129-46AE-9729-54E847CC026C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{96EC24C1-B129-46AE-9729-54E847CC026C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

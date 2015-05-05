@@ -1,15 +1,52 @@
 ﻿using Acerodon.App.AcerodonService;
+using Acerodon.App.Helper;
+using Acerodon.GenericDataContract.Types;
+using Acerodon.Model;
 using System;
 using System.Collections.Generic;
+using System.Windows;
+using System.Windows.Input;
 
 namespace Acerodon.App.ViewModel.Interface
 {
-    public abstract class GridViewModel<T> : IGenericGridViewModel<T>
+    public abstract class GridViewModel<T> : IGridViewModel
     {
+               
+        private DataServiceClient _service = new DataServiceClient();
+        private Window _window;
+        private List<T> _items = new List<T>();
+        private int _page = 1;
         private int _rows = 10;
-        private int _page = 0;
         private int _pages = 0;
 
+
+        public DataServiceClient Service
+        {
+            get
+            {
+                return _service;
+            }
+        }
+        public Window Window
+        {
+            get
+            {
+                return _window;
+            }
+            set
+            {
+                _window = value;
+                _window.Refresh();
+            }
+
+        }
+        public List<T> Items
+        {
+            get
+            {
+                return _items;
+            }
+        }
         public int Page
         {
             get
@@ -18,8 +55,9 @@ namespace Acerodon.App.ViewModel.Interface
             }
             set
             {
-                _page = value;
-                Refresh();
+                
+                _page = value < 1 ? 1 : value;
+                Window.Refresh();
 
             }
         }
@@ -44,64 +82,61 @@ namespace Acerodon.App.ViewModel.Interface
             }
         }
 
+        public Window EntryForm { get; set; }
 
-        private List<T> _Items = new List<T>();
-        public DataServiceClient service = new DataServiceClient();
-        
-        public GridViewModel()
-        {
-            Refresh();
-        }
+        public ICommand NextCommand { get { return new Command(Next); } }
+        public ICommand BackCommand { get { return new Command(Back); } }
+        public ICommand FirstCommand { get { return new Command(First); } }
+        public ICommand LastCommand { get { return new Command(Last); } }
+        public ICommand AddCommand { get { return new Command(Add); } }
+        public ICommand EditCommand { get { return new Command(Edit); } }
+        public ICommand DeleteCommand { get { return new Command(Delete); } }
+        public ICommand RefreshCommand { get { return new Command(Refresh); } }
 
-        public void Refresh()
-        {
-            _Items.Clear();
-            _Items.AddRange(Get(Page, Rows));
-        }
-
-        public List<T> Items
-        {
-            get { return _Items; }           
-        }
-         
-        public void Back()
+        private void Back()
         {
             Page--;
-            Refresh();
         }
-
-        public void Next()
+        private void Next()
         {
             Page++;
-            Refresh();
         }
-
-        public void First()
+        private void First()
+        {
+            Page = 1;
+        }
+        private void Last()
+        {
+            Page = Pages;
+        }
+        private void Add()
+        {
+            EntryForm.ShowDialog();
+        }
+        private void Edit()
         {
             throw new NotImplementedException();
         }
-
-        public void Last()
+        private void Delete()
         {
             throw new NotImplementedException();
         }
-
-        public void Add()
+        private void Refresh()
         {
-            throw new NotImplementedException();
+            Query query = new Query();
+            query.Page = Page;
+            query.Rows = Rows;
+            _items.Clear();
+            _items.AddRange( Get(query) );
         }
 
-        public void Edit()
+        private T[] Get(Query query)
         {
-            throw new NotImplementedException();
-        }
+            
+            AcerodonDataContract datacontract = AcerodonDataContract.Create<T>();
+            datacontract = Service.Get(datacontract, query);
+            return datacontract.GetList<T>();
 
-        public void Delete()
-        {
-            throw new NotImplementedException();
         }
-        
-        public abstract T[] Get(int page, int row);
-      
     }
 }

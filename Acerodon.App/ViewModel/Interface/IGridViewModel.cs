@@ -1,21 +1,24 @@
-﻿namespace Acerodon.App.ViewModel.Interface
+﻿using Acerodon.App.AcerodonService;
+using System;
+using System.Windows;
+using System.Windows.Input;
+namespace Acerodon.App.ViewModel.Interface
 {
-    public interface IGridViewModel
+    interface IGridViewModel
     {
+        ICommand AddCommand { get; }
+        ICommand BackCommand { get; }
+        ICommand DeleteCommand { get; }
+        ICommand EditCommand { get; }
+        System.Windows.Window EntryForm { get; set; }
+        ICommand FirstCommand { get; }
+        ICommand LastCommand { get; }
+        ICommand NextCommand { get; }
         int Page { get; set; }
-        int Rows { get; set; }
         int Pages { get; }
-        
-        void Back();
-        void Next();
-        
-        void First();
-        void Last();
-                
-        void Add();
-        void Edit();
-        void Delete();
-
-        void Refresh();
+        ICommand RefreshCommand { get; }
+        int Rows { get; set; }
+        DataServiceClient Service { get; }
+        Window Window { get; set; }
     }
 }

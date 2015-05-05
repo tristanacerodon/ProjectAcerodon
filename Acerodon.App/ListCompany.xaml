@@ -11,24 +11,24 @@
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}"/>
-                    <GridViewColumn Header="Date Created" DisplayMemberBinding="{Binding DateCreated}"/>
-                    <GridViewColumn Header="Date Modified" DisplayMemberBinding="{Binding DateModified}"/>
+                    <GridViewColumn Header="Date Created" DisplayMemberBinding="{Binding CreatedDate}"/>
+                    <GridViewColumn Header="Date Modified" DisplayMemberBinding="{Binding ModifiedDate}"/>
 
                 </GridView>
             </ListView.View>
         </ListView>
         <ToolBar VerticalAlignment="Top" Height="30">
-            <Button Content="&lt;&lt;" VerticalAlignment="Stretch" Width="23"/>
-            <Button Content="&lt;" VerticalAlignment="Stretch" Width="24"/>
-            <TextBox Height="25" Margin="0" TextWrapping="Wrap" Text="{Binding Page, NotifyOnTargetUpdated=True}" VerticalAlignment="Top" Width="33"/>
+            <Button Content="&lt;&lt;" VerticalAlignment="Stretch" Width="23" Command="{Binding FirstCommand, Mode=OneWay}"/>
+            <Button Content="&lt;" VerticalAlignment="Stretch" Width="24" Command="{Binding BackCommand, Mode=OneWay}"/>
+            <TextBox Height="25" Margin="0" TextWrapping="Wrap" Text="{Binding Page, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="33"/>
             <Label Content="of" Height="25" VerticalAlignment="Top"/>
-            <Label Content="0" Height="25" VerticalAlignment="Top"/>
-            <Button Content="&gt;" VerticalAlignment="Stretch" Width="23" Height="25" Command="{Binding Next, Mode=OneWay}"/>
-            <Button Content="&gt;&gt;" VerticalAlignment="Stretch" Width="23" Height="25" Cursor=""/>
-            <Button Content="Add" VerticalAlignment="Stretch" Width="47"/>
-            <Button Content="Edit" VerticalAlignment="Stretch" Width="47"/>
-            <Button Content="Delete" VerticalAlignment="Stretch" Width="47"/>
-            <Button x:Name="btnRefresh" Content="Refresh" VerticalAlignment="Stretch" Width="47" Click="btnRefresh_Click"/>
+            <Label Content="{Binding Pages, Mode=OneWay}" Height="25" VerticalAlignment="Top"/>
+            <Button Content="&gt;" VerticalAlignment="Stretch" Width="23" Height="25" Command="{Binding NextCommand, Mode=OneWay}"/>
+            <Button Content="&gt;&gt;" VerticalAlignment="Stretch" Width="23" Height="25" Cursor="" Command="{Binding LastCommand, Mode=OneWay}"/>
+            <Button Content="Add" VerticalAlignment="Stretch" Width="47" Command="{Binding AddCommand, Mode=OneWay}"/>
+            <Button Content="Edit" VerticalAlignment="Stretch" Width="47" Command="{Binding EditCommand, Mode=OneWay}"/>
+            <Button Content="Delete" VerticalAlignment="Stretch" Width="47" Command="{Binding DeleteCommand, Mode=OneWay}"/>
+            <Button x:Name="btnRefresh" Content="Refresh" VerticalAlignment="Stretch" Width="47" Command="{Binding RefreshCommand, Mode=OneWay}"/>
         </ToolBar>
     </Grid>
 </Window>

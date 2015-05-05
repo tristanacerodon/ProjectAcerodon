@@ -91,11 +91,12 @@
     <Compile Include="DataService.svc.cs">
       <DependentUpon>DataService.svc</DependentUpon>
     </Compile>
-    <Compile Include="Sort.cs" />
-    <Compile Include="Filter.cs" />
-    <Compile Include="Query.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Acerodon.GenericDataContract.Types\Acerodon.GenericDataContract.Types.csproj">
+      <Project>{96ec24c1-b129-46ae-9729-54e847cc026c}</Project>
+      <Name>Acerodon.GenericDataContract.Types</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Acerodon.Model\Acerodon.Model.csproj">
       <Project>{710aaa3c-e902-499a-880a-0e9e73b354a1}</Project>
       <Name>Acerodon.Model</Name>

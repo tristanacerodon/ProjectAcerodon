@@ -9,7 +9,7 @@ namespace Acerodon.App.ViewModel
         public static void Refresh(this Window window)
         {
             object temp = window.DataContext;
-            ((IGridViewModel)temp).Refresh();
+            ((IGridViewModel)temp).RefreshCommand.Execute(null);
           
             window.DataContext = null;
             window.DataContext = temp;
