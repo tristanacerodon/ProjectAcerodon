@@ -24,20 +24,9 @@ namespace Acerodon.Service
 
         private void Fill(AcerodonDataContract contract, Query query)
         {
-            Assembly a = Assembly.GetAssembly(typeof(IEntity));
-            Type type = (from t in a.GetTypes()
-                         where t.Name == contract.TypeName
-                         select t).First();
 
-            MethodInfo method = typeof(GenericEntity).GetMethod("CreateInstance",
-                              BindingFlags.Public | BindingFlags.Static);
-
-            method = method.MakeGenericMethod(type);
-
-            dynamic obj = method.Invoke(null, new object[] { context });
-
+            dynamic obj = GenericEntity.CreateInstanceDynamic(context, contract.TypeName);
             contract.ItemList = new List<object>(obj.Get(query));
-
 
         }
     }

@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -16,6 +17,21 @@ namespace Acerodon.Repository
             where T : IEntity, new()
         {
             return new GenericEntity<T>(db);
+        }
+
+        public static dynamic CreateInstanceDynamic(ProjectContext context, string TypeName)
+        {
+            Assembly a = Assembly.GetAssembly(typeof(IEntity));
+            Type type = (from t in a.GetTypes()
+                         where t.Name == TypeName
+                         select t).First();
+
+            MethodInfo method = typeof(GenericEntity).GetMethod("CreateInstance",
+                              BindingFlags.Public | BindingFlags.Static);
+
+            method = method.MakeGenericMethod(type);
+
+            return method.Invoke(null, new object[] { context });
         }
     }
 

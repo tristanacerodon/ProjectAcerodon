@@ -20,7 +20,7 @@
         <ToolBar VerticalAlignment="Top" Height="30">
             <Button Content="&lt;&lt;" VerticalAlignment="Stretch" Width="23" Command="{Binding FirstCommand, Mode=OneWay}"/>
             <Button Content="&lt;" VerticalAlignment="Stretch" Width="24" Command="{Binding BackCommand, Mode=OneWay}"/>
-            <TextBox Height="25" Margin="0" TextWrapping="Wrap" Text="{Binding Page, BindsDirectlyToSource=True}" VerticalAlignment="Top" Width="33"/>
+            <TextBox Height="25" Margin="0" TextWrapping="Wrap" Text="{Binding Page, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="33"/>
             <Label Content="of" Height="25" VerticalAlignment="Top"/>
             <Label Content="{Binding Pages, Mode=OneWay}" Height="25" VerticalAlignment="Top"/>
             <Button Content="&gt;" VerticalAlignment="Stretch" Width="23" Height="25" Command="{Binding NextCommand, Mode=OneWay}"/>

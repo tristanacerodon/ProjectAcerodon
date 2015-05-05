@@ -55,7 +55,8 @@ namespace Acerodon.App.ViewModel.Interface
             }
             set
             {
-                _page = value;
+                
+                _page = value < 1 ? 1 : value;
                 Window.Refresh();
 
             }
@@ -110,7 +111,7 @@ namespace Acerodon.App.ViewModel.Interface
         }
         private void Add()
         {
-            throw new NotImplementedException();
+            EntryForm.ShowDialog();
         }
         private void Edit()
         {

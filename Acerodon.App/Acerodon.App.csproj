@@ -64,6 +64,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\CustomerGridViewModel.cs" />
     <Compile Include="ViewModel\CompanyGridViewModel.cs" />
     <Compile Include="ViewModel\Interface\GridViewModel.cs" />
     <Compile Include="Helper\Extensions.cs" />

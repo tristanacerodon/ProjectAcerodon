@@ -1,11 +1,9 @@
-﻿using Acerodon.Model;
-using Acerodon.Repository;
+﻿using Acerodon.Model.Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.Serialization;
-using System.Web;
 
 namespace Acerodon.GenericDataContract.Types
 {
@@ -24,9 +22,10 @@ namespace Acerodon.GenericDataContract.Types
 
         private static Type[] GetKnownTypes()
         {
-            return new Type[] {
-                typeof(Company)
-            };
+
+            Assembly a = Assembly.GetAssembly(typeof(IEntity));
+            return a.GetTypes().ToArray();
+
         }
 
         public static AcerodonDataContract Create<T>()

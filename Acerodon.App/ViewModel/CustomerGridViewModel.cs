@@ -3,7 +3,7 @@ using Acerodon.Model;
 
 namespace Acerodon.App.ViewModel
 {
-    class CustomerGridViewModel : GridViewModel<Company>
+    class CustomerGridViewModel : GridViewModel<Customer>
     {
         public CustomerGridViewModel()
         {
