@@ -244,10 +244,25 @@ namespace Acerodon.App.AcerodonService {
     public interface DataService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/DataService/Get", ReplyAction="http://tempuri.org/DataService/GetResponse")]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Acerodon.Model.Interface.ICompany))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Acerodon.Model.Interface.IEntity))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(object[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Acerodon.Model.Category))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Acerodon.Model.CompanyCustomer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Acerodon.Model.Company))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Acerodon.Model.Customer))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Acerodon.Model.CompanyPosition))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Acerodon.Model.Employee))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Acerodon.Model.EmploymentStatus))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Acerodon.Model.EmployeeRole))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Acerodon.Model.Project))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Acerodon.Model.Gender))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Acerodon.Model.Milestone))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Acerodon.Model.MilestoneTask))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Acerodon.Model.Task))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Acerodon.Model.TaskStatus))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(object[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Acerodon.Model.Interface.IEntity))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Acerodon.Model.Interface.ICompany))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Acerodon.Model.Interface.IPerson))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Acerodon.Model.Interface.ITask))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Acerodon.App.AcerodonService.Query))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Acerodon.App.AcerodonService.Filter[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Acerodon.App.AcerodonService.Filter))]
@@ -258,6 +273,29 @@ namespace Acerodon.App.AcerodonService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/DataService/Get", ReplyAction="http://tempuri.org/DataService/GetResponse")]
         System.Threading.Tasks.Task<Acerodon.GenericDataContract.Types.AcerodonDataContract> GetAsync(Acerodon.GenericDataContract.Types.AcerodonDataContract contract, Acerodon.App.AcerodonService.Query query);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/DataService/Add", ReplyAction="http://tempuri.org/DataService/AddResponse")]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Acerodon.Model.CompanyCustomer))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Acerodon.Model.Interface.ICompany))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Acerodon.Model.Customer))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Acerodon.Model.Company))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Acerodon.Model.CompanyPosition))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Acerodon.Model.EmploymentStatus))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Acerodon.Model.EmployeeRole))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Acerodon.Model.Interface.IPerson))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Acerodon.Model.Employee))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Acerodon.Model.Project))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Acerodon.Model.Gender))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Acerodon.Model.MilestoneTask))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Acerodon.Model.Interface.ITask))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Acerodon.Model.Task))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Acerodon.Model.Milestone))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Acerodon.Model.TaskStatus))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Acerodon.Model.Category))]
+        bool Add(Acerodon.Model.Interface.IEntity entry);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/DataService/Add", ReplyAction="http://tempuri.org/DataService/AddResponse")]
+        System.Threading.Tasks.Task<bool> AddAsync(Acerodon.Model.Interface.IEntity entry);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -293,6 +331,14 @@ namespace Acerodon.App.AcerodonService {
         
         public System.Threading.Tasks.Task<Acerodon.GenericDataContract.Types.AcerodonDataContract> GetAsync(Acerodon.GenericDataContract.Types.AcerodonDataContract contract, Acerodon.App.AcerodonService.Query query) {
             return base.Channel.GetAsync(contract, query);
+        }
+        
+        public bool Add(Acerodon.Model.Interface.IEntity entry) {
+            return base.Channel.Add(entry);
+        }
+        
+        public System.Threading.Tasks.Task<bool> AddAsync(Acerodon.Model.Interface.IEntity entry) {
+            return base.Channel.AddAsync(entry);
         }
     }
 }

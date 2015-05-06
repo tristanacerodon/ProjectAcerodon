@@ -1,5 +1,6 @@
 ﻿using Acerodon.GenericDataContract.Types;
 using Acerodon.Repository;
+using Acerodon.Repository.Helper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,8 +19,21 @@ namespace Acerodon.Service
         [OperationContract]
         public AcerodonDataContract Get(AcerodonDataContract contract, Query query)
         {
+
+            Company p = new Company();
+            p.Save(context);
+
             Fill(contract, query);
             return contract;
+        }
+
+        [OperationContract]
+        public bool Add(IEntity entry)     
+        {
+
+            return entry.Save(context);
+                      
+            
         }
 
         private void Fill(AcerodonDataContract contract, Query query)

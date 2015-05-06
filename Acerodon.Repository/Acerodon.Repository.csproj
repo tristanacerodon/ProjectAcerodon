@@ -57,6 +57,7 @@
   <ItemGroup>
     <Compile Include="Filter.cs" />
     <Compile Include="GenericEntity.cs" />
+    <Compile Include="Helper\Extentions.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ProjectContext.cs" />
     <Compile Include="Query.cs" />

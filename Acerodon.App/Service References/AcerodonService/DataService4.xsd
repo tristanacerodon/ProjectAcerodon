@@ -2,6 +2,7 @@
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:import schemaLocation="http://localhost:29587/DataService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Acerodon.GenericDataContract.Types" />
   <xs:import schemaLocation="http://localhost:29587/DataService.svc?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/Acerodon.Repository" />
+  <xs:import schemaLocation="http://localhost:29587/DataService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/Acerodon.Model.Interface" />
   <xs:element name="Get">
     <xs:complexType>
       <xs:sequence>
@@ -14,6 +15,20 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/Acerodon.GenericDataContract.Types" minOccurs="0" name="GetResult" nillable="true" type="q3:AcerodonDataContract" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Add">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/Acerodon.Model.Interface" minOccurs="0" name="entry" nillable="true" type="q4:IEntity" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="AddResult" type="xs:boolean" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

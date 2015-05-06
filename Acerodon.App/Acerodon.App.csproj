@@ -58,14 +58,19 @@
     <Compile Include="AddCompany.xaml.cs">
       <DependentUpon>AddCompany.xaml</DependentUpon>
     </Compile>
+    <Compile Include="GenericListForm.cs" />
     <Compile Include="Helper\Command.cs" />
+    <Compile Include="ListForm.xaml.cs">
+      <DependentUpon>ListForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Service References\AcerodonService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="ViewModel\CustomerGridViewModel.cs" />
-    <Compile Include="ViewModel\CompanyGridViewModel.cs" />
     <Compile Include="ViewModel\Interface\GridViewModel.cs" />
     <Compile Include="Helper\Extensions.cs" />
     <Compile Include="ViewModel\Interface\IGridViewModel.cs" />
@@ -73,18 +78,18 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ListCompany.xaml">
-      <Generator>MSBuild:Compile</Generator>
+    <Page Include="ListForm.xaml">
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="ListCompany.xaml.cs">
-      <DependentUpon>ListCompany.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
+    <Page Include="MainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\DataSources\Acerodon.GenericDataContract.Types.AcerodonDataContract.datasource" />

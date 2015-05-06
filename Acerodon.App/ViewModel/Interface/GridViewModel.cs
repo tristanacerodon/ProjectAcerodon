@@ -9,7 +9,7 @@ using System.Windows.Input;
 
 namespace Acerodon.App.ViewModel.Interface
 {
-    public abstract class GridViewModel<T> : IGridViewModel
+    public class GridViewModel<T> : IGridViewModel
     {
                
         private DataServiceClient _service = new DataServiceClient();
@@ -36,7 +36,7 @@ namespace Acerodon.App.ViewModel.Interface
             set
             {
                 _window = value;
-                _window.Refresh();
+                Refresh();
             }
 
         }
@@ -57,7 +57,7 @@ namespace Acerodon.App.ViewModel.Interface
             {
                 
                 _page = value < 1 ? 1 : value;
-                Window.Refresh();
+                Refresh();
 
             }
         }
@@ -128,6 +128,10 @@ namespace Acerodon.App.ViewModel.Interface
             query.Rows = Rows;
             _items.Clear();
             _items.AddRange( Get(query) );
+
+            _window.DataContext = null;
+            _window.DataContext = this;
+
         }
 
         private T[] Get(Query query)
