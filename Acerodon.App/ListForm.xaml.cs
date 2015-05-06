@@ -1,5 +1,4 @@
-﻿using Acerodon.Model;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,20 +15,10 @@ using System.Windows.Shapes;
 namespace Acerodon.App
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for List.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class ListForm : Window
     {
-        public MainWindow()
-        {
-            InitializeComponent();
-        }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-           var frmGender = new GenericListForm<Gender>();
-           frmGender.Show();
-          
-        }
     }
 }
