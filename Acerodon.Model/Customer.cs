@@ -9,8 +9,6 @@ namespace Acerodon.Model
 {
     public class Customer : ICompany
     {
-        public DateTime ContractStart { get; set; }
-        public DateTime ContractEnd { get; set; }
     }
 
 }

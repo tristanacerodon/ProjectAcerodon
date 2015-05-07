@@ -8,6 +8,6 @@ using System.Threading.Tasks;
 
 namespace Acerodon.Model {
     public class User : IEntity {
-        public string Password { get; set; }
+     
     }
 }

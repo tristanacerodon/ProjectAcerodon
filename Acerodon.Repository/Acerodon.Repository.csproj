@@ -60,6 +60,9 @@
     <Compile Include="Helper\Extentions.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ProjectContext.cs" />
+    <Compile Include="ProjectContextInitializer.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Query.cs" />
     <Compile Include="Sort.cs" />
   </ItemGroup>

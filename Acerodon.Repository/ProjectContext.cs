@@ -3,11 +3,10 @@ using System;
 using System.Data.Entity;
 using System.Linq;
 
-namespace Acerodon.Repository
-{
-   
-    public class ProjectContext : DbContext
-    {
+namespace Acerodon.Repository {
+
+    public class ProjectContext : DbContext {
+        private static readonly DatabaseInitializerMode _databaseInitializerMode = DatabaseInitializerMode.DoNotChange;
         public DbSet<Company> Companies { get; set; }
         public DbSet<Customer> Customers { get; set; }
         public DbSet<CompanyCustomer> CompanyCustomers { get; set; }
@@ -24,24 +23,23 @@ namespace Acerodon.Repository
         public DbSet<Category> Categories { get; set; }
         public DbSet<User> Users { get; set; }
         public ProjectContext()
-            : base("name=ProjectContext")
-        {
-        }
+            : base("name=ProjectContext") {
 
-        protected override void OnModelCreating(DbModelBuilder modelBuilder) {
-            modelBuilder.Entity<User>()
-                .HasOptional(e => e.CreatedBy)
-                .WithMany()
-                .HasForeignKey(e=> e.CreatedById);
-
-            modelBuilder.Entity<User>()
-                .HasOptional(e => e.ModifiedBy)
-                .WithMany()
-                .HasForeignKey(e => e.ModifiedById);
-
+                switch (_databaseInitializerMode) {
+                    case DatabaseInitializerMode.Reseed:
+                        Database.SetInitializer(new ProjectContextInitializer());
+                        Database.Initialize(true);
+                        break;
+                }
 
         }
+        public enum DatabaseInitializerMode {
+            DropThenCreate = 0 ,
+            Reseed = 1 ,
+            DoNotChange = 2
+        }
+
     }
 
-   
+
 }
