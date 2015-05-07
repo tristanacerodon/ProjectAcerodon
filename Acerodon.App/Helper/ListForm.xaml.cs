@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace Acerodon.App
+namespace Acerodon.App.Helper
 {
     /// <summary>
     /// Interaction logic for List.xaml

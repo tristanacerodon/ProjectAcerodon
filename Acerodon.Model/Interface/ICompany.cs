@@ -8,7 +8,6 @@ namespace Acerodon.Model.Interface
 {
     public abstract class ICompany : IEntity
     {
-        public string Name { get; set; }
 
     }
 }

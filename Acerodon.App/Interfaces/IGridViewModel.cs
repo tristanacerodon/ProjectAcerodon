@@ -2,7 +2,7 @@
 using System;
 using System.Windows;
 using System.Windows.Input;
-namespace Acerodon.App.ViewModel.Interface
+namespace Acerodon.App.Interfaces
 {
     interface IGridViewModel
     {

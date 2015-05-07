@@ -8,9 +8,7 @@ using System.Threading.Tasks;
 namespace Acerodon.Model {
     public class Category : IEntity {
 
-        public string Name {get;set;}
         public string Description {get; set;}
 
-        
     }
 }

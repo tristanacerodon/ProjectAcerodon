@@ -1,7 +1,7 @@
 ﻿<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:ViewModel="clr-namespace:Acerodon.App.ViewModel" x:Class="Acerodon.App.ListForm"
+        x:Class="Acerodon.App.Helper.ListForm"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
         <ListView x:Name="lstItems" Margin="10,35,10,10" IsSynchronizedWithCurrentItem="False">

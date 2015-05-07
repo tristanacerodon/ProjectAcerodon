@@ -7,6 +7,5 @@ using System.Threading.Tasks;
 namespace Acerodon.Model.Interface {
     public abstract class ITask: IEntity {
 
-        public string Name {get; set;}
     }
 }

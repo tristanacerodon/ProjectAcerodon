@@ -21,14 +21,26 @@ namespace Acerodon.Repository
         public DbSet<EmployeeRole> EmployeeRoles { get; set; }
         public DbSet<Gender> Genders { get; set; }
         public DbSet<EmploymentStatus> EmploymentStatus { get; set; }
-        public DbSet<Category> Category { get; set; }
-
+        public DbSet<Category> Categories { get; set; }
+        public DbSet<User> Users { get; set; }
         public ProjectContext()
             : base("name=ProjectContext")
         {
         }
 
-       
+        protected override void OnModelCreating(DbModelBuilder modelBuilder) {
+            modelBuilder.Entity<User>()
+                .HasOptional(e => e.CreatedBy)
+                .WithMany()
+                .HasForeignKey(e=> e.CreatedById);
+
+            modelBuilder.Entity<User>()
+                .HasOptional(e => e.ModifiedBy)
+                .WithMany()
+                .HasForeignKey(e => e.ModifiedById);
+
+
+        }
     }
 
    

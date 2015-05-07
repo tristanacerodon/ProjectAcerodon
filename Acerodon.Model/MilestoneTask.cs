@@ -14,7 +14,6 @@ namespace Acerodon.Model {
         public Guid EmployeeId { get; set; }
         public Guid CompanyPositionId { get; set; }
         public Guid TaskStatusId { get; set; }
-        public string Name { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
         public virtual Project Project { get; set; }

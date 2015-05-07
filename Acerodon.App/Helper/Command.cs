@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace Acerodon.App.Helper
+namespace Acerodon.App.Areas.Helper
 {
     class Command : ICommand
     {

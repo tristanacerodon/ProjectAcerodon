@@ -1,17 +1,7 @@
-﻿using Acerodon.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Acerodon.App.Helper;
+using Acerodon.Model;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+using System.Linq;
 
 namespace Acerodon.App
 {
@@ -27,7 +17,11 @@ namespace Acerodon.App
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-           var frmGender = new GenericListForm<Gender>();
+           var frmGender = new GenericListForm<Company>();
+           
+
+
+
            frmGender.Show();
           
         }

@@ -1,4 +1,4 @@
-﻿using Acerodon.App.ViewModel.Interface;
+﻿using Acerodon.App.Interfaces;
 using Acerodon.Model.Interface;
 using System;
 using System.Collections.Generic;
@@ -10,7 +10,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 
-namespace Acerodon.App
+namespace Acerodon.App.Helper
 {
     class GenericListForm<T> : ListForm
         where T : IEntity, new()

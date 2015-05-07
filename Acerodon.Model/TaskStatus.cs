@@ -7,6 +7,5 @@ using System.Threading.Tasks;
 
 namespace Acerodon.Model {
     public class TaskStatus : IEntity {
-        public string Name { get; set; }
     }
 }

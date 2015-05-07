@@ -1,5 +1,5 @@
 ﻿using Acerodon.App.AcerodonService;
-using Acerodon.App.Helper;
+using Acerodon.App.Areas.Helper;
 using Acerodon.GenericDataContract.Types;
 using Acerodon.Model;
 using System;
@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Input;
 
-namespace Acerodon.App.ViewModel.Interface
+namespace Acerodon.App.Interfaces
 {
     public class GridViewModel<T> : IGridViewModel
     {

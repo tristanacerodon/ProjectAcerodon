@@ -55,12 +55,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="AddCompany.xaml.cs">
-      <DependentUpon>AddCompany.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="GenericListForm.cs" />
+    <Compile Include="Interfaces\GridViewModel.cs" />
+    <Compile Include="Interfaces\IGridViewModel.cs" />
+    <Compile Include="Helper\GenericListForm.cs" />
     <Compile Include="Helper\Command.cs" />
-    <Compile Include="ListForm.xaml.cs">
+    <Compile Include="Helper\ListForm.xaml.cs">
       <DependentUpon>ListForm.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
@@ -71,14 +70,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="ViewModel\Interface\GridViewModel.cs" />
-    <Compile Include="Helper\Extensions.cs" />
-    <Compile Include="ViewModel\Interface\IGridViewModel.cs" />
-    <Page Include="AddCompany.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="ListForm.xaml">
+    <Page Include="Helper\ListForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -150,6 +142,9 @@
       <Project>{710aaa3c-e902-499a-880a-0e9e73b354a1}</Project>
       <Name>Acerodon.Model</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Areas\Common\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
