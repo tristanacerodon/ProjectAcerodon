@@ -18,7 +18,6 @@ namespace Acerodon.App.Helper
 
         public GridViewModel<T> ViewModel { get; set; }
 
-
         public List<GridViewColumn> Columns { get; set; }
         public GenericListForm()
         {
@@ -53,7 +52,6 @@ namespace Acerodon.App.Helper
             PropertyInfo[] properties = typeof(T).GetProperties();
             foreach (var property in properties)
             {
-
                 GridViewColumn column = new GridViewColumn()
                      {
                          Header = property.Name,

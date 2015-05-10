@@ -65,6 +65,9 @@
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Milestones.xaml.cs">
+      <DependentUpon>Milestones.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Service References\AcerodonService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -79,6 +82,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="MainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Milestones.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -145,6 +152,23 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Common\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="todo_list_add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Contents\Images\onebit_01.png" />
+    <Resource Include="Contents\Images\onebit_06.png" />
+    <Resource Include="Contents\Images\table_green.png" />
+    <Resource Include="Contents\Images\todo_list_add.png" />
+    <Resource Include="Contents\Images\todo_list_remove.png" />
+    <Resource Include="Contents\Images\to_do_list.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Contents\Images\book_edit.png" />
+    <Resource Include="Contents\Images\cut.png" />
+    <Resource Include="Contents\Images\disk.png" />
+    <Resource Include="Contents\Images\save_as.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
