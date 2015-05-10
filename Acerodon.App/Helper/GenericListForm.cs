@@ -50,7 +50,7 @@ namespace Acerodon.App.Helper
                 });
 
 
-            PropertyInfo[] properties = typeof(T).GetProperties();
+            var properties = typeof(T).GetProperties().Where(p => !p.GetMethod.IsVirtual);
             foreach (var property in properties)
             {
 

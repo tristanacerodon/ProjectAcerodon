@@ -37,8 +37,7 @@ namespace Acerodon.Service
 
             dynamic obj = GenericEntity.CreateInstanceDynamic(context, contract.TypeName);
             contract.ItemList = new List<object>(obj.Get(query));
-
-        }
+       }
     }
 
 }

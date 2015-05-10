@@ -1,23 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/Acerodon.Model.Interface" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Acerodon.Model.Interface" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:29587/DataService.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/Acerodon.Model" />
   <xs:import schemaLocation="http://localhost:29587/DataService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
   <xs:complexType name="IEntity">
     <xs:sequence>
-      <xs:element minOccurs="0" name="CreatedBy" type="ser:guid" />
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/Acerodon.Model" minOccurs="0" name="CreatedBy" nillable="true" type="q1:User" />
+      <xs:element minOccurs="0" name="CreatedById" nillable="true" type="ser:guid" />
       <xs:element minOccurs="0" name="CreatedDate" type="xs:dateTime" />
       <xs:element minOccurs="0" name="Id" type="ser:guid" />
       <xs:element minOccurs="0" name="IsActive" type="xs:boolean" />
-      <xs:element minOccurs="0" name="ModifiedBy" type="ser:guid" />
+      <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Acerodon.Model" minOccurs="0" name="ModifiedBy" nillable="true" type="q2:User" />
+      <xs:element minOccurs="0" name="ModifiedById" nillable="true" type="ser:guid" />
       <xs:element minOccurs="0" name="ModifiedDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="IEntity" nillable="true" type="tns:IEntity" />
   <xs:complexType name="ICompany">
     <xs:complexContent mixed="false">
       <xs:extension base="tns:IEntity">
-        <xs:sequence>
-          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
-        </xs:sequence>
+        <xs:sequence />
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
@@ -38,9 +40,7 @@
   <xs:complexType name="ITask">
     <xs:complexContent mixed="false">
       <xs:extension base="tns:IEntity">
-        <xs:sequence>
-          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
-        </xs:sequence>
+        <xs:sequence />
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>

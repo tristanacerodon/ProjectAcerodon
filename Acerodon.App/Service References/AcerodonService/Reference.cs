@@ -244,6 +244,7 @@ namespace Acerodon.App.AcerodonService {
     public interface DataService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/DataService/Get", ReplyAction="http://tempuri.org/DataService/GetResponse")]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Acerodon.Model.User))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Acerodon.Model.Category))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Acerodon.Model.CompanyCustomer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Acerodon.Model.Company))]
@@ -275,6 +276,7 @@ namespace Acerodon.App.AcerodonService {
         System.Threading.Tasks.Task<Acerodon.GenericDataContract.Types.AcerodonDataContract> GetAsync(Acerodon.GenericDataContract.Types.AcerodonDataContract contract, Acerodon.App.AcerodonService.Query query);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/DataService/Add", ReplyAction="http://tempuri.org/DataService/AddResponse")]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Acerodon.Model.Category))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Acerodon.Model.CompanyCustomer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Acerodon.Model.Interface.ICompany))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Acerodon.Model.Customer))]
@@ -291,7 +293,7 @@ namespace Acerodon.App.AcerodonService {
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Acerodon.Model.Task))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Acerodon.Model.Milestone))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Acerodon.Model.TaskStatus))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Acerodon.Model.Category))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Acerodon.Model.User))]
         bool Add(Acerodon.Model.Interface.IEntity entry);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/DataService/Add", ReplyAction="http://tempuri.org/DataService/AddResponse")]

@@ -15,8 +15,7 @@ namespace Acerodon.Repository {
             CreateCustomer(context);
             CreateEmploymentStatus(context);
             CreateEmployee(context);
-            CreateCompanyCustomer(context);
-            
+            CreateCompanyCustomer(context);            
             CreateProject(context);
             CreateCompanyPosition(context);
             CreateEmployeeRole(context);
@@ -28,31 +27,19 @@ namespace Acerodon.Repository {
             
         }
 
-        private const string _adminUserId = "F5E336D7-DBCD-42D7-B4B8-41FB346F266A";
-        private const string _adminProjectName = "1B642228-7A23-40D5-A8B4-B3757FA0BCDD";
+        private Guid _adminUserId = Guid.NewGuid();
 
         private void CreateUser(ProjectContext context) {
             var entity = new User {
-                Id = Guid.Parse(_adminUserId) ,
+                Id = _adminUserId ,
                 Name = "admin" ,
-                CreatedById = Guid.Parse(_adminUserId) ,
+                CreatedById = null,
                 CreatedDate = DateTime.UtcNow ,
-                ModifiedById = null ,
+                ModifiedById = null,
                 ModifiedDate = DateTime.UtcNow ,
                 IsActive = true
             };
 
-            context.Users.Add(entity);
-            context.SaveChanges();
-            entity = new User {
-                Id = Guid.Parse(_adminProjectName) ,
-                Name = "admin.ProjectName" ,
-                CreatedById = Guid.Parse(_adminUserId) ,
-                CreatedDate = DateTime.UtcNow ,
-                ModifiedById = null ,
-                ModifiedDate = DateTime.UtcNow ,
-                IsActive = true
-            };
             context.Users.Add(entity);
             context.SaveChanges();
         }
@@ -61,9 +48,9 @@ namespace Acerodon.Repository {
             var entity = new Gender {
                 Id = Guid.Parse("E0DFD76B-C689-4241-824A-0FCFA956348A") ,
                 Name = "Male" ,
-                CreatedById = Guid.Parse(_adminUserId) ,
+                CreatedById = _adminUserId ,
                 CreatedDate = DateTime.UtcNow ,
-                ModifiedById = null ,
+                ModifiedById = _adminUserId,
                 ModifiedDate = DateTime.UtcNow ,
                 IsActive = true
             };
@@ -73,9 +60,9 @@ namespace Acerodon.Repository {
             entity = new Gender {
                 Id = Guid.Parse("77FEE6EF-D574-4384-A06F-B9BF14923627") ,
                 Name = "Female" ,
-                CreatedById = Guid.Parse(_adminUserId) ,
+                CreatedById = _adminUserId ,
                 CreatedDate = DateTime.UtcNow ,
-                ModifiedById = null ,
+                ModifiedById = _adminUserId,
                 ModifiedDate = DateTime.UtcNow ,
                 IsActive = true
             };
@@ -87,9 +74,9 @@ namespace Acerodon.Repository {
             var entity = new Company {
                 Id = Guid.Parse("1B65B807-9E3A-4178-AA46-7CA1C42867E8") ,
                 Name = "ABC Company" ,
-                CreatedById = Guid.Parse(_adminUserId) ,
+                CreatedById = _adminUserId ,
                 CreatedDate = DateTime.UtcNow ,
-                ModifiedById = null ,
+                ModifiedById = _adminUserId,
                 ModifiedDate = DateTime.UtcNow ,
                 IsActive = true
             };
@@ -99,9 +86,9 @@ namespace Acerodon.Repository {
             entity = new Company {
                 Id = Guid.Parse("77FEE6EF-D574-4384-A06F-B9BF14923627") ,
                 Name = "LTD Company" ,
-                CreatedById = Guid.Parse(_adminUserId) ,
+                CreatedById = _adminUserId ,
                 CreatedDate = DateTime.UtcNow ,
-                ModifiedById = null ,
+                ModifiedById = _adminUserId,
                 ModifiedDate = DateTime.UtcNow ,
                 IsActive = true
             };
@@ -113,9 +100,9 @@ namespace Acerodon.Repository {
             var entity = new Customer {
                 Id = Guid.Parse("FF4D41F0-A054-4EF5-B715-A0ECD17F3CFC") ,
                 Name = "Customer A" ,
-                CreatedById = Guid.Parse(_adminUserId) ,
+                CreatedById = _adminUserId ,
                 CreatedDate = DateTime.UtcNow ,
-                ModifiedById = null ,
+                ModifiedById = _adminUserId,
                 ModifiedDate = DateTime.UtcNow ,
                 IsActive = true
             };
@@ -125,9 +112,9 @@ namespace Acerodon.Repository {
             entity = new Customer {
                 Id = Guid.Parse("85C92F4A-82E0-4D9A-B3A7-6F44565D18A0") ,
                 Name = "Customer B" ,
-                CreatedById = Guid.Parse(_adminUserId) ,
+                CreatedById = _adminUserId ,
                 CreatedDate = DateTime.UtcNow ,
-                ModifiedById = null ,
+                ModifiedById = _adminUserId,
                 ModifiedDate = DateTime.UtcNow ,
                 IsActive = true
             };
@@ -137,9 +124,9 @@ namespace Acerodon.Repository {
             entity = new Customer {
                 Id = Guid.Parse("49979459-26B3-4390-83F3-1E371BD850D1") ,
                 Name = "Customer C" ,
-                CreatedById = Guid.Parse(_adminUserId) ,
+                CreatedById = _adminUserId ,
                 CreatedDate = DateTime.UtcNow ,
-                ModifiedById = null ,
+                ModifiedById = _adminUserId,
                 ModifiedDate = DateTime.UtcNow ,
                 IsActive = true
             };
@@ -151,9 +138,9 @@ namespace Acerodon.Repository {
             var entity = new EmploymentStatus {
                 Id = Guid.Parse("78BA7391-266F-4C8C-8143-7B4FEB70F37E") ,
                 Name = "Regular" ,
-                CreatedById = Guid.Parse(_adminUserId) ,
+                CreatedById = _adminUserId ,
                 CreatedDate = DateTime.UtcNow ,
-                ModifiedById = null ,
+                ModifiedById = _adminUserId,
                 ModifiedDate = DateTime.UtcNow ,
                 IsActive = true
             };
@@ -163,9 +150,9 @@ namespace Acerodon.Repository {
             entity = new EmploymentStatus {
                 Id = Guid.Parse("6490171A-5811-4D5D-9D64-0996127C2429") ,
                 Name = "Contractual" ,
-                CreatedById = Guid.Parse(_adminUserId) ,
+                CreatedById = _adminUserId ,
                 CreatedDate = DateTime.UtcNow ,
-                ModifiedById = null ,
+                ModifiedById = _adminUserId,
                 ModifiedDate = DateTime.UtcNow ,
                 IsActive = true
             };
@@ -175,9 +162,9 @@ namespace Acerodon.Repository {
             entity = new EmploymentStatus {
                 Id = Guid.Parse("E41AEF4D-1CAC-46A7-90CB-34A1814C5461") ,
                 Name = "Project Base" ,
-                CreatedById = Guid.Parse(_adminUserId) ,
+                CreatedById = _adminUserId ,
                 CreatedDate = DateTime.UtcNow ,
-                ModifiedById = null ,
+                ModifiedById = _adminUserId,
                 ModifiedDate = DateTime.UtcNow ,
                 IsActive = true
             };
@@ -195,9 +182,9 @@ namespace Acerodon.Repository {
                 MiddleName = "L." ,
                 GenderId = Guid.Parse("E0DFD76B-C689-4241-824A-0FCFA956348A") ,
                 Name = string.Format("{0}, {1} {2}" , "Xiao" , "Xin" , "L.") ,
-                CreatedById = Guid.Parse(_adminUserId) ,
+                CreatedById = _adminUserId ,
                 CreatedDate = DateTime.UtcNow ,
-                ModifiedById = null ,
+                ModifiedById = _adminUserId,
                 ModifiedDate = DateTime.UtcNow ,
                 IsActive = true
             };
@@ -212,9 +199,9 @@ namespace Acerodon.Repository {
                 MiddleName = "S." ,
                 GenderId = Guid.Parse("77FEE6EF-D574-4384-A06F-B9BF14923627") ,
                 Name = string.Format("{0}, {1} {2}" , "Zin" , "Garen" , "S.") ,
-                CreatedById = Guid.Parse(_adminUserId) ,
+                CreatedById = _adminUserId ,
                 CreatedDate = DateTime.UtcNow ,
-                ModifiedById = null ,
+                ModifiedById = _adminUserId,
                 ModifiedDate = DateTime.UtcNow ,
                 IsActive = true
             };
@@ -229,9 +216,9 @@ namespace Acerodon.Repository {
                 MiddleName = "C." ,
                 GenderId = Guid.Parse("77FEE6EF-D574-4384-A06F-B9BF14923627") ,
                 Name = string.Format("{0}, {1} {2}" , "Whee" , "Zhen" , "C.") ,
-                CreatedById = Guid.Parse(_adminUserId) ,
+                CreatedById = _adminUserId ,
                 CreatedDate = DateTime.UtcNow ,
-                ModifiedById = null ,
+                ModifiedById = _adminUserId,
                 ModifiedDate = DateTime.UtcNow ,
                 IsActive = true
             };
@@ -245,9 +232,9 @@ namespace Acerodon.Repository {
                 CompanyId = Guid.Parse("1B65B807-9E3A-4178-AA46-7CA1C42867E8") ,
                 CustomerId = Guid.Parse("FF4D41F0-A054-4EF5-B715-A0ECD17F3CFC") ,
                 Name = "Client A" ,
-                CreatedById = Guid.Parse(_adminUserId) ,
+                CreatedById = _adminUserId ,
                 CreatedDate = DateTime.UtcNow ,
-                ModifiedById = null ,
+                ModifiedById = _adminUserId,
                 ModifiedDate = DateTime.UtcNow ,
                 IsActive = true
             };
@@ -259,9 +246,9 @@ namespace Acerodon.Repository {
                 CompanyId = Guid.Parse("77FEE6EF-D574-4384-A06F-B9BF14923627") ,
                 CustomerId = Guid.Parse("85C92F4A-82E0-4D9A-B3A7-6F44565D18A0") ,
                 Name = "Client B" ,
-                CreatedById = Guid.Parse(_adminUserId) ,
+                CreatedById = _adminUserId ,
                 CreatedDate = DateTime.UtcNow ,
-                ModifiedById = null ,
+                ModifiedById = _adminUserId,
                 ModifiedDate = DateTime.UtcNow ,
                 IsActive = true
             };
@@ -277,9 +264,9 @@ namespace Acerodon.Repository {
                 StartDate = DateTime.UtcNow ,
                 EndDate = DateTime.UtcNow.AddMonths(3) ,
                 Name = "Payroll" ,
-                CreatedById = Guid.Parse(_adminUserId) ,
+                CreatedById = _adminUserId ,
                 CreatedDate = DateTime.UtcNow ,
-                ModifiedById = null ,
+                ModifiedById = _adminUserId,
                 ModifiedDate = DateTime.UtcNow ,
                 IsActive = true
             };
@@ -293,9 +280,9 @@ namespace Acerodon.Repository {
                 StartDate = DateTime.UtcNow ,
                 EndDate = DateTime.UtcNow.AddMonths(3) ,
                 Name = "Sales and Inventory" ,
-                CreatedById = Guid.Parse(_adminUserId) ,
+                CreatedById = _adminUserId ,
                 CreatedDate = DateTime.UtcNow ,
-                ModifiedById = null ,
+                ModifiedById = _adminUserId,
                 ModifiedDate = DateTime.UtcNow ,
                 IsActive = true
             };
@@ -309,9 +296,9 @@ namespace Acerodon.Repository {
                 JobTitle = "Project Manager" ,
                 Description = "Project Manager" ,
                 Name = "Project Manager" ,
-                CreatedById = Guid.Parse(_adminUserId) ,
+                CreatedById = _adminUserId ,
                 CreatedDate = DateTime.UtcNow ,
-                ModifiedById = null ,
+                ModifiedById = _adminUserId,
                 ModifiedDate = DateTime.UtcNow ,
                 IsActive = true
             };
@@ -323,9 +310,9 @@ namespace Acerodon.Repository {
                 JobTitle = "Team Lead" ,
                 Description = "Team Lead" ,
                 Name = "Team Lead" ,
-                CreatedById = Guid.Parse(_adminUserId) ,
+                CreatedById = _adminUserId ,
                 CreatedDate = DateTime.UtcNow ,
-                ModifiedById = null ,
+                ModifiedById = _adminUserId,
                 ModifiedDate = DateTime.UtcNow ,
                 IsActive = true
             };
@@ -340,9 +327,9 @@ namespace Acerodon.Repository {
                 CompanyPositionId = Guid.Parse("D33578DD-27BB-4B9E-9C0C-C2629EAFF5BB") ,
                 ProjectId = Guid.Parse("401E9CBE-3E6C-4D58-A0FF-C060A25C5DA4") ,
                 Name = "Project Manager" ,
-                CreatedById = Guid.Parse(_adminUserId) ,
+                CreatedById = _adminUserId ,
                 CreatedDate = DateTime.UtcNow ,
-                ModifiedById = null ,
+                ModifiedById = _adminUserId,
                 ModifiedDate = DateTime.UtcNow ,
                 IsActive = true
             };
@@ -355,9 +342,9 @@ namespace Acerodon.Repository {
                 CompanyPositionId = Guid.Parse("EA1DB3C3-32A4-4511-9F61-40C05FD846C7") ,
                 ProjectId = Guid.Parse("E29EA720-5B78-4CF4-8C72-4DF289888179") ,
                 Name = "Team Lead" ,
-                CreatedById = Guid.Parse(_adminUserId) ,
+                CreatedById = _adminUserId ,
                 CreatedDate = DateTime.UtcNow ,
-                ModifiedById = null ,
+                ModifiedById = _adminUserId,
                 ModifiedDate = DateTime.UtcNow ,
                 IsActive = true
             };
@@ -369,9 +356,9 @@ namespace Acerodon.Repository {
             var entity = new Milestone {
                 Id = Guid.Parse("8738FEC2-9637-4CAD-AD42-25E475F20EF1") ,
                 Name = "Milestone A" ,
-                CreatedById = Guid.Parse(_adminUserId) ,
+                CreatedById = _adminUserId ,
                 CreatedDate = DateTime.UtcNow ,
-                ModifiedById = null ,
+                ModifiedById = _adminUserId,
                 ModifiedDate = DateTime.UtcNow ,
                 IsActive = true
             };
@@ -381,9 +368,9 @@ namespace Acerodon.Repository {
             entity = new Milestone {
                 Id = Guid.Parse("B6E4EA83-DC4D-451F-A708-C9E5DA45FD70") ,
                 Name = "Milestone B" ,
-                CreatedById = Guid.Parse(_adminUserId) ,
+                CreatedById = _adminUserId ,
                 CreatedDate = DateTime.UtcNow ,
-                ModifiedById = null ,
+                ModifiedById = _adminUserId,
                 ModifiedDate = DateTime.UtcNow ,
                 IsActive = true
             };
@@ -395,9 +382,9 @@ namespace Acerodon.Repository {
             var entity = new Task {
                 Id = Guid.Parse("1CF1A465-D4E3-46DC-A9ED-D4A19073EAC3") ,
                 Name = "Task A" ,
-                CreatedById = Guid.Parse(_adminUserId) ,
+                CreatedById = _adminUserId ,
                 CreatedDate = DateTime.UtcNow ,
-                ModifiedById = null ,
+                ModifiedById = _adminUserId,
                 ModifiedDate = DateTime.UtcNow ,
                 IsActive = true
             };
@@ -407,9 +394,9 @@ namespace Acerodon.Repository {
             entity = new Task {
                 Id = Guid.Parse("438A6378-B06C-4FAD-AA48-C9FD7780549A") ,
                 Name = "Task B" ,
-                CreatedById = Guid.Parse(_adminUserId) ,
+                CreatedById = _adminUserId ,
                 CreatedDate = DateTime.UtcNow ,
-                ModifiedById = null ,
+                ModifiedById = _adminUserId,
                 ModifiedDate = DateTime.UtcNow ,
                 IsActive = true
             };
@@ -420,9 +407,9 @@ namespace Acerodon.Repository {
             var entity = new TaskStatus {
                 Id = Guid.Parse("1C278D2B-5C5A-4286-A8A2-B48A5C30B2AD") ,
                 Name = "Done" ,
-                CreatedById = Guid.Parse(_adminUserId) ,
+                CreatedById = _adminUserId ,
                 CreatedDate = DateTime.UtcNow ,
-                ModifiedById = null ,
+                ModifiedById = _adminUserId,
                 ModifiedDate = DateTime.UtcNow ,
                 IsActive = true
             };
@@ -432,9 +419,9 @@ namespace Acerodon.Repository {
             entity = new Model.TaskStatus {
                 Id = Guid.Parse("AEAB5604-BC7E-4A10-B5E3-10E4CF0BDD3B") ,
                 Name = "Ongoing" ,
-                CreatedById = Guid.Parse(_adminUserId) ,
+                CreatedById = _adminUserId ,
                 CreatedDate = DateTime.UtcNow ,
-                ModifiedById = null ,
+                ModifiedById = _adminUserId,
                 ModifiedDate = DateTime.UtcNow ,
                 IsActive = true
             };
@@ -444,9 +431,9 @@ namespace Acerodon.Repository {
             entity = new Model.TaskStatus {
                 Id = Guid.Parse("F401DF13-4EAE-44E7-87C9-E947B12E0768") ,
                 Name = "OnHold" ,
-                CreatedById = Guid.Parse(_adminUserId) ,
+                CreatedById = _adminUserId ,
                 CreatedDate = DateTime.UtcNow ,
-                ModifiedById = null ,
+                ModifiedById = _adminUserId,
                 ModifiedDate = DateTime.UtcNow ,
                 IsActive = true
             };
@@ -466,9 +453,9 @@ namespace Acerodon.Repository {
                 StartDate = DateTime.UtcNow ,
                 EndDate = DateTime.UtcNow.AddMonths(3) ,
                 Name = "Milestone Task" ,
-                CreatedById = Guid.Parse(_adminUserId) ,
+                CreatedById = _adminUserId ,
                 CreatedDate = DateTime.UtcNow ,
-                ModifiedById = null ,
+                ModifiedById = _adminUserId,
                 ModifiedDate = DateTime.UtcNow ,
                 IsActive = true
             };
