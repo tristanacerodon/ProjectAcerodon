@@ -8,108 +8,129 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Acerodon.Model.Interface.ICompany">
-    <Position X="4.25" Y="4.5" Width="1.5" />
+    <Position X="3.5" Y="4.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Interface\ICompany.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Acerodon.Model.Interface.IEntity">
-    <Position X="22" Y="0.75" Width="2.75" />
+    <Position X="22.75" Y="0.75" Width="2.75" />
     <TypeIdentifier>
       <HashCode>AAACCAAAACAAAAAEEAAAAAQAAkAAAAAAAgAAAAAAAAE=</HashCode>
       <FileName>Interface\IEntity.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Acerodon.Model.Customer">
-    <Position X="4.75" Y="6.25" Width="2.75" />
+    <Position X="4.75" Y="6.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAIBAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Customer.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Acerodon.Model.CompanyCustomer">
-    <Position X="8.25" Y="4.5" Width="2.5" />
+    <Position X="7" Y="4.5" Width="2.5" />
     <TypeIdentifier>
       <HashCode>AAEAAAAAAAIAAAAAAAAAAAAAAAAAABAAAAAABAAAAAA=</HashCode>
       <FileName>CompanyCustomer.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Acerodon.Model.Project">
-    <Position X="11.5" Y="4.5" Width="3.5" />
+    <Position X="10.25" Y="4.5" Width="3.5" />
     <TypeIdentifier>
       <HashCode>AACAAABAAAAgAAAAAAAAAAAgAAAAAAAAAAAAAEAAAAA=</HashCode>
       <FileName>Project.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Acerodon.Model.Category">
-    <Position X="15.75" Y="4.5" Width="2.25" />
+    <Position X="14.5" Y="4.5" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Category.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Acerodon.Model.CompanyPosition">
-    <Position X="18.75" Y="4.5" Width="2.25" />
+    <Position X="17.5" Y="4.5" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAA=</HashCode>
       <FileName>CompanyPosition.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Acerodon.Model.EmployeeRole">
-    <Position X="21.75" Y="4.5" Width="3.25" />
+    <Position X="20.5" Y="4.5" Width="3.25" />
     <TypeIdentifier>
       <HashCode>AAAABAAAAAAAAAAAAAAACAAADAAAAAAAgAAAAAACAAA=</HashCode>
       <FileName>EmployeeRole.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Acerodon.Model.EmploymentStatus">
-    <Position X="25.75" Y="4.5" Width="1.75" />
+    <Position X="24.5" Y="4.5" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>EmploymentStatus.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Acerodon.Model.Gender">
-    <Position X="28.25" Y="4.5" Width="1.5" />
+    <Position X="27" Y="4.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Gender.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Acerodon.Model.Interface.IPerson">
-    <Position X="30.5" Y="4.5" Width="2.5" />
+    <Position X="29.75" Y="4.5" Width="2.5" />
     <TypeIdentifier>
       <HashCode>AAAAAEAAAAAAAAAEAAAQAAAAAAAAEAAAAAAAAAAAAAg=</HashCode>
       <FileName>Interface\IPerson.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Acerodon.Model.Interface.ITask">
-    <Position X="33.75" Y="4.5" Width="1.5" />
+    <Position X="34.5" Y="4.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Interface\ITask.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Acerodon.Model.MilestoneTask">
-    <Position X="36" Y="4.5" Width="3.25" />
+    <Position X="38" Y="4.5" Width="3.25" />
     <TypeIdentifier>
       <HashCode>AAIABAAAAAAAAAAAAAAACAAwDAhAAAAAgECAAEACAAA=</HashCode>
       <FileName>MilestoneTask.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Acerodon.Model.TaskStatus">
-    <Position X="40" Y="4.5" Width="1.5" />
+    <Position X="42" Y="4.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>TaskStatus.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Acerodon.Model.User">
-    <Position X="42.25" Y="4.5" Width="2.25" />
+    <Position X="44.25" Y="4.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>User.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Acerodon.Model.Employee">
+    <Position X="29.25" Y="7.5" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAQAAAAgAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Employee.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Acerodon.Model.Milestone">
+    <Position X="33.5" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Milestone.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Acerodon.Model.Task">
+    <Position X="35.75" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Task.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />

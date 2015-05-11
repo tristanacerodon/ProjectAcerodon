@@ -17,13 +17,7 @@ namespace Acerodon.App
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-           var frmGender = new GenericListForm<Company>();
-           
-
-
-
-           frmGender.Show();
-          
+           var a = new GenericListForm<Company>().ShowDialog();         
         }
     }
 }

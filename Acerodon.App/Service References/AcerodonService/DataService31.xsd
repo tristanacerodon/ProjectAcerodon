@@ -24,11 +24,24 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="ICompany" nillable="true" type="tns:ICompany" />
+  <xs:complexType name="IActivity">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:IEntity">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="EndDate" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="StartDate" type="xs:dateTime" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="IActivity" nillable="true" type="tns:IActivity" />
   <xs:complexType name="IPerson">
     <xs:complexContent mixed="false">
       <xs:extension base="tns:IEntity">
         <xs:sequence>
           <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+          <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/Acerodon.Model" minOccurs="0" name="Gender" nillable="true" type="q3:Gender" />
           <xs:element minOccurs="0" name="GenderId" type="ser:guid" />
           <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="MiddleName" nillable="true" type="xs:string" />
@@ -37,12 +50,4 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="IPerson" nillable="true" type="tns:IPerson" />
-  <xs:complexType name="ITask">
-    <xs:complexContent mixed="false">
-      <xs:extension base="tns:IEntity">
-        <xs:sequence />
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:element name="ITask" nillable="true" type="tns:ITask" />
 </xs:schema>

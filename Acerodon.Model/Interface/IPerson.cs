@@ -11,6 +11,8 @@ namespace Acerodon.Model.Interface {
         public string LastName { get; set; }
         public string MiddleName { get; set; }
         public Guid GenderId { get; set; }
+        public virtual Gender Gender { get; set; }
+        
         public override string ToString() {
             return string.Format("{0}, {1} {2}",LastName,FirstName,MiddleName);
         }

@@ -11,9 +11,8 @@ namespace Acerodon.Model
     {
         public Guid CompanyId { get; set; }
         public Guid CustomerId { get; set; }
-
-        public virtual Company Company { get; set; }
         public virtual Customer Customer { get; set; }
+        public virtual ICollection<Project> Projects { get; set; }
 
     }
 }

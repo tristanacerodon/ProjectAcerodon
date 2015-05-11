@@ -12,6 +12,7 @@ using System.Windows.Data;
 
 namespace Acerodon.App.Helper
 {
+    
     class GenericListForm<T> : ListForm
         where T : IEntity, new()
     {
@@ -73,12 +74,13 @@ namespace Acerodon.App.Helper
             
             btnAdd.Command = ViewModel.AddCommand;
             btnEdit.Command = ViewModel.EditCommand;
+
             btnDelete.Command = ViewModel.DeleteCommand;
 
             btnRefresh.Command = ViewModel.RefreshCommand;
 
             DataContext = ViewModel;
-            ViewModel.Window = this;
+            ViewModel.ListForm = this;
         }
 
 

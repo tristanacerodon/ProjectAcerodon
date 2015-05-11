@@ -1,4 +1,5 @@
 ﻿using Acerodon.App.AcerodonService;
+using Acerodon.App.Helper;
 using System;
 using System.Windows;
 using System.Windows.Input;
@@ -9,8 +10,7 @@ namespace Acerodon.App.Interfaces
         ICommand AddCommand { get; }
         ICommand BackCommand { get; }
         ICommand DeleteCommand { get; }
-        ICommand EditCommand { get; }
-        System.Windows.Window EntryForm { get; set; }
+        ICommand EditCommand { get; }        
         ICommand FirstCommand { get; }
         ICommand LastCommand { get; }
         ICommand NextCommand { get; }
@@ -19,6 +19,6 @@ namespace Acerodon.App.Interfaces
         ICommand RefreshCommand { get; }
         int Rows { get; set; }
         DataServiceClient Service { get; }
-        Window Window { get; set; }
+        ListForm ListForm { get; set; }
     }
 }
