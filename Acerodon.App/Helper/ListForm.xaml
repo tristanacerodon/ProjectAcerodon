@@ -4,7 +4,7 @@
         x:Class="Acerodon.App.Helper.ListForm"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
-        <ListView x:Name="lstItems" Margin="10,35,10,10" IsSynchronizedWithCurrentItem="False">
+        <ListView x:Name="lstItems" Margin="10,35,10,10" IsSynchronizedWithCurrentItem="True" SelectionMode="Single">
             <ListView.View>
                 <GridView x:Name="grdItems">                    
                 </GridView>
@@ -19,7 +19,7 @@
             <Button x:Name="btnNext" Content="&gt;" VerticalAlignment="Stretch" Width="23" Height="25"/>
             <Button x:Name="btnLast" Content="&gt;&gt;" VerticalAlignment="Stretch" Width="23" Height="25" />
             <Button x:Name="btnAdd" Content="Add" VerticalAlignment="Stretch" Width="47"/>
-            <Button x:Name="btnEdit" Content="Edit" VerticalAlignment="Stretch" Width="47"/>
+            <Button x:Name="btnEdit" Content="Edit" VerticalAlignment="Stretch" Width="47" CommandParameter="{Binding SelectedItem, ElementName=lstItems}"/>
             <Button x:Name="btnDelete" Content="Delete" VerticalAlignment="Stretch" Width="47"/>
             <Button x:Name="btnRefresh" Content="Refresh" VerticalAlignment="Stretch" Width="47"/>
         </ToolBar>

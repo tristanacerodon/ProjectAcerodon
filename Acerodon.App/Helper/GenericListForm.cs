@@ -12,6 +12,7 @@ using System.Windows.Data;
 
 namespace Acerodon.App.Helper
 {
+    
     class GenericListForm<T> : ListForm
         where T : IEntity, new()
     {
@@ -49,7 +50,7 @@ namespace Acerodon.App.Helper
                 });
 
 
-            PropertyInfo[] properties = typeof(T).GetProperties();
+            var properties = typeof(T).GetProperties().Where(p => !p.GetMethod.IsVirtual);
             foreach (var property in properties)
             {
                 GridViewColumn column = new GridViewColumn()
@@ -71,12 +72,13 @@ namespace Acerodon.App.Helper
             
             btnAdd.Command = ViewModel.AddCommand;
             btnEdit.Command = ViewModel.EditCommand;
+
             btnDelete.Command = ViewModel.DeleteCommand;
 
             btnRefresh.Command = ViewModel.RefreshCommand;
 
             DataContext = ViewModel;
-            ViewModel.Window = this;
+            ViewModel.ListForm = this;
         }
 
 

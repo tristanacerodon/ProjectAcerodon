@@ -1,7 +1,9 @@
 ﻿using Acerodon.App.AcerodonService;
 using Acerodon.App.Areas.Helper;
+using Acerodon.App.Helper;
 using Acerodon.GenericDataContract.Types;
 using Acerodon.Model;
+using Acerodon.Model.Interface;
 using System;
 using System.Collections.Generic;
 using System.Windows;
@@ -10,10 +12,11 @@ using System.Windows.Input;
 namespace Acerodon.App.Interfaces
 {
     public class GridViewModel<T> : IGridViewModel
+        where T : IEntity, new()
     {
-               
+
         private DataServiceClient _service = new DataServiceClient();
-        private Window _window;
+        private ListForm _listForm;
         private List<T> _items = new List<T>();
         private int _page = 1;
         private int _rows = 10;
@@ -27,15 +30,15 @@ namespace Acerodon.App.Interfaces
                 return _service;
             }
         }
-        public Window Window
+        public ListForm ListForm
         {
             get
             {
-                return _window;
+                return _listForm;
             }
             set
             {
-                _window = value;
+                _listForm = value;
                 Refresh();
             }
 
@@ -55,7 +58,7 @@ namespace Acerodon.App.Interfaces
             }
             set
             {
-                
+
                 _page = value < 1 ? 1 : value;
                 Refresh();
 
@@ -81,8 +84,6 @@ namespace Acerodon.App.Interfaces
                 return _pages;
             }
         }
-
-        public Window EntryForm { get; set; }
 
         public ICommand NextCommand { get { return new Command(Next); } }
         public ICommand BackCommand { get { return new Command(Back); } }
@@ -111,15 +112,32 @@ namespace Acerodon.App.Interfaces
         }
         private void Add()
         {
-            EntryForm.ShowDialog();
+
+            var entry = new T();
+            if (GenericEntryForm.Create(entry).ShowDialog() == true)
+            {
+                Items.Add(entry);
+                ResetBindings();
+            }
+
         }
         private void Edit()
         {
-            throw new NotImplementedException();
+            if (_listForm.lstItems.SelectedItem != null)
+                if (GenericEntryForm.Create((T)_listForm.lstItems.SelectedItem).ShowDialog() == true)
+                {
+
+                }
+
         }
         private void Delete()
         {
-            throw new NotImplementedException();
+            if (_listForm.lstItems.SelectedItem != null)
+                if (MessageBox.Show("Delete Selected Item?", "Delete", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                {
+                    Items.Remove((T)_listForm.lstItems.SelectedItem);
+                    ResetBindings();
+                }
         }
         private void Refresh()
         {
@@ -127,16 +145,24 @@ namespace Acerodon.App.Interfaces
             query.Page = Page;
             query.Rows = Rows;
             _items.Clear();
-            _items.AddRange( Get(query) );
+            _items.AddRange(Get(query));
 
-            _window.DataContext = null;
-            _window.DataContext = this;
+            ResetBindings();
+
+        }
+
+        private void ResetBindings()
+        {
+            _listForm.DataContext = null;
+            _listForm.DataContext = this;
+
+            _listForm.lstItems.SelectedItem = null;
 
         }
 
         private T[] Get(Query query)
         {
-            
+
             AcerodonDataContract datacontract = AcerodonDataContract.Create<T>();
             datacontract = Service.Get(datacontract, query);
             return datacontract.GetList<T>();

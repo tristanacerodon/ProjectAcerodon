@@ -9,6 +9,6 @@ namespace Acerodon.Model
 {
     public class Company : ICompany
     {
-
+        public virtual ICollection<CompanyCustomer> CompanyCustomers { get; set; }
     }
 }

@@ -55,6 +55,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Helper\EntryForm.xaml.cs">
+      <DependentUpon>EntryForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Helper\GenericEntryForm.cs" />
     <Compile Include="Interfaces\GridViewModel.cs" />
     <Compile Include="Interfaces\IGridViewModel.cs" />
     <Compile Include="Helper\GenericListForm.cs" />
@@ -73,6 +77,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Page Include="Helper\EntryForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Helper\ListForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

@@ -2,12 +2,19 @@
 <xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/Acerodon.Model" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Acerodon.Model" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:import schemaLocation="http://localhost:29587/DataService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/Acerodon.Model.Interface" />
   <xs:import schemaLocation="http://localhost:29587/DataService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
-  <xs:complexType name="Category">
+  <xs:complexType name="User">
     <xs:complexContent mixed="false">
       <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/Acerodon.Model.Interface" base="q1:IEntity">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="User" nillable="true" type="tns:User" />
+  <xs:complexType name="Category">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q2="http://schemas.datacontract.org/2004/07/Acerodon.Model.Interface" base="q2:IEntity">
         <xs:sequence>
           <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
-          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
@@ -15,50 +22,83 @@
   <xs:element name="Category" nillable="true" type="tns:Category" />
   <xs:complexType name="CompanyCustomer">
     <xs:complexContent mixed="false">
-      <xs:extension xmlns:q2="http://schemas.datacontract.org/2004/07/Acerodon.Model.Interface" base="q2:IEntity">
+      <xs:extension xmlns:q3="http://schemas.datacontract.org/2004/07/Acerodon.Model.Interface" base="q3:IEntity">
         <xs:sequence>
-          <xs:element minOccurs="0" name="Company" nillable="true" type="tns:Company" />
           <xs:element minOccurs="0" name="CompanyId" type="ser:guid" />
           <xs:element minOccurs="0" name="Customer" nillable="true" type="tns:Customer" />
           <xs:element minOccurs="0" name="CustomerId" type="ser:guid" />
+          <xs:element minOccurs="0" name="Projects" nillable="true" type="tns:ArrayOfProject" />
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="CompanyCustomer" nillable="true" type="tns:CompanyCustomer" />
-  <xs:complexType name="Company">
+  <xs:complexType name="Customer">
     <xs:complexContent mixed="false">
-      <xs:extension xmlns:q3="http://schemas.datacontract.org/2004/07/Acerodon.Model.Interface" base="q3:ICompany">
+      <xs:extension xmlns:q4="http://schemas.datacontract.org/2004/07/Acerodon.Model.Interface" base="q4:ICompany">
         <xs:sequence />
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-  <xs:element name="Company" nillable="true" type="tns:Company" />
-  <xs:complexType name="Customer">
-    <xs:complexContent mixed="false">
-      <xs:extension xmlns:q4="http://schemas.datacontract.org/2004/07/Acerodon.Model.Interface" base="q4:ICompany">
-        <xs:sequence>
-          <xs:element minOccurs="0" name="ContractEnd" type="xs:dateTime" />
-          <xs:element minOccurs="0" name="ContractStart" type="xs:dateTime" />
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
   <xs:element name="Customer" nillable="true" type="tns:Customer" />
-  <xs:complexType name="CompanyPosition">
+  <xs:complexType name="ArrayOfProject">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Project" nillable="true" type="tns:Project" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfProject" nillable="true" type="tns:ArrayOfProject" />
+  <xs:complexType name="Project">
     <xs:complexContent mixed="false">
-      <xs:extension xmlns:q5="http://schemas.datacontract.org/2004/07/Acerodon.Model.Interface" base="q5:IEntity">
+      <xs:extension xmlns:q5="http://schemas.datacontract.org/2004/07/Acerodon.Model.Interface" base="q5:IActivity">
         <xs:sequence>
-          <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
-          <xs:element minOccurs="0" name="JobTitle" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CompanyCustomerId" type="ser:guid" />
+          <xs:element minOccurs="0" name="Milestones" nillable="true" type="tns:ArrayOfMilestone" />
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-  <xs:element name="CompanyPosition" nillable="true" type="tns:CompanyPosition" />
+  <xs:element name="Project" nillable="true" type="tns:Project" />
+  <xs:complexType name="ArrayOfMilestone">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Milestone" nillable="true" type="tns:Milestone" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfMilestone" nillable="true" type="tns:ArrayOfMilestone" />
+  <xs:complexType name="Milestone">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q6="http://schemas.datacontract.org/2004/07/Acerodon.Model.Interface" base="q6:IActivity">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="MilestoneId" nillable="true" type="ser:guid" />
+          <xs:element minOccurs="0" name="Milestones" nillable="true" type="tns:ArrayOfMilestone" />
+          <xs:element minOccurs="0" name="ProjectId" type="ser:guid" />
+          <xs:element minOccurs="0" name="Tasks" nillable="true" type="tns:ArrayOfTask" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Milestone" nillable="true" type="tns:Milestone" />
+  <xs:complexType name="ArrayOfTask">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Task" nillable="true" type="tns:Task" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTask" nillable="true" type="tns:ArrayOfTask" />
+  <xs:complexType name="Task">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q7="http://schemas.datacontract.org/2004/07/Acerodon.Model.Interface" base="q7:IActivity">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Employee" nillable="true" type="tns:Employee" />
+          <xs:element minOccurs="0" name="EmployeeId" type="ser:guid" />
+          <xs:element minOccurs="0" name="TaskStatus" nillable="true" type="tns:TaskStatus" />
+          <xs:element minOccurs="0" name="TaskStatusId" type="ser:guid" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Task" nillable="true" type="tns:Task" />
   <xs:complexType name="Employee">
     <xs:complexContent mixed="false">
-      <xs:extension xmlns:q6="http://schemas.datacontract.org/2004/07/Acerodon.Model.Interface" base="q6:IPerson">
+      <xs:extension xmlns:q8="http://schemas.datacontract.org/2004/07/Acerodon.Model.Interface" base="q8:IPerson">
         <xs:sequence>
           <xs:element minOccurs="0" name="EmploymentStatus" nillable="true" type="tns:EmploymentStatus" />
           <xs:element minOccurs="0" name="EmploymentStatusId" type="ser:guid" />
@@ -67,19 +107,44 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="Employee" nillable="true" type="tns:Employee" />
+  <xs:complexType name="Gender">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q9="http://schemas.datacontract.org/2004/07/Acerodon.Model.Interface" base="q9:IEntity">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Gender" nillable="true" type="tns:Gender" />
   <xs:complexType name="EmploymentStatus">
     <xs:complexContent mixed="false">
-      <xs:extension xmlns:q7="http://schemas.datacontract.org/2004/07/Acerodon.Model.Interface" base="q7:IEntity">
-        <xs:sequence>
-          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
-        </xs:sequence>
+      <xs:extension xmlns:q10="http://schemas.datacontract.org/2004/07/Acerodon.Model.Interface" base="q10:IEntity">
+        <xs:sequence />
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="EmploymentStatus" nillable="true" type="tns:EmploymentStatus" />
+  <xs:complexType name="TaskStatus">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q11="http://schemas.datacontract.org/2004/07/Acerodon.Model.Interface" base="q11:IEntity">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="TaskStatus" nillable="true" type="tns:TaskStatus" />
+  <xs:complexType name="CompanyPosition">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q12="http://schemas.datacontract.org/2004/07/Acerodon.Model.Interface" base="q12:IEntity">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="JobTitle" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CompanyPosition" nillable="true" type="tns:CompanyPosition" />
   <xs:complexType name="EmployeeRole">
     <xs:complexContent mixed="false">
-      <xs:extension xmlns:q8="http://schemas.datacontract.org/2004/07/Acerodon.Model.Interface" base="q8:IEntity">
+      <xs:extension xmlns:q13="http://schemas.datacontract.org/2004/07/Acerodon.Model.Interface" base="q13:IEntity">
         <xs:sequence>
           <xs:element minOccurs="0" name="CompanyPosition" nillable="true" type="tns:CompanyPosition" />
           <xs:element minOccurs="0" name="CompanyPositionId" type="ser:guid" />
@@ -92,79 +157,20 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="EmployeeRole" nillable="true" type="tns:EmployeeRole" />
-  <xs:complexType name="Project">
+  <xs:complexType name="Company">
     <xs:complexContent mixed="false">
-      <xs:extension xmlns:q9="http://schemas.datacontract.org/2004/07/Acerodon.Model.Interface" base="q9:IEntity">
+      <xs:extension xmlns:q14="http://schemas.datacontract.org/2004/07/Acerodon.Model.Interface" base="q14:ICompany">
         <xs:sequence>
-          <xs:element minOccurs="0" name="CompanyCustomer" nillable="true" type="tns:CompanyCustomer" />
-          <xs:element minOccurs="0" name="CompanyCustomerId" type="ser:guid" />
-          <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
-          <xs:element minOccurs="0" name="EndDate" type="xs:dateTime" />
-          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
-          <xs:element minOccurs="0" name="StartDate" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="CompanyCustomers" nillable="true" type="tns:ArrayOfCompanyCustomer" />
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-  <xs:element name="Project" nillable="true" type="tns:Project" />
-  <xs:complexType name="Gender">
-    <xs:complexContent mixed="false">
-      <xs:extension xmlns:q10="http://schemas.datacontract.org/2004/07/Acerodon.Model.Interface" base="q10:IEntity">
-        <xs:sequence>
-          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
+  <xs:element name="Company" nillable="true" type="tns:Company" />
+  <xs:complexType name="ArrayOfCompanyCustomer">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CompanyCustomer" nillable="true" type="tns:CompanyCustomer" />
+    </xs:sequence>
   </xs:complexType>
-  <xs:element name="Gender" nillable="true" type="tns:Gender" />
-  <xs:complexType name="Milestone">
-    <xs:complexContent mixed="false">
-      <xs:extension xmlns:q11="http://schemas.datacontract.org/2004/07/Acerodon.Model.Interface" base="q11:ITask">
-        <xs:sequence />
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:element name="Milestone" nillable="true" type="tns:Milestone" />
-  <xs:complexType name="MilestoneTask">
-    <xs:complexContent mixed="false">
-      <xs:extension xmlns:q12="http://schemas.datacontract.org/2004/07/Acerodon.Model.Interface" base="q12:IEntity">
-        <xs:sequence>
-          <xs:element minOccurs="0" name="CompanyPosition" nillable="true" type="tns:CompanyPosition" />
-          <xs:element minOccurs="0" name="CompanyPositionId" type="ser:guid" />
-          <xs:element minOccurs="0" name="Employee" nillable="true" type="tns:Employee" />
-          <xs:element minOccurs="0" name="EmployeeId" type="ser:guid" />
-          <xs:element minOccurs="0" name="EndDate" type="xs:dateTime" />
-          <xs:element minOccurs="0" name="Milestone" nillable="true" type="tns:Milestone" />
-          <xs:element minOccurs="0" name="MilestoneId" type="ser:guid" />
-          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
-          <xs:element minOccurs="0" name="Project" nillable="true" type="tns:Project" />
-          <xs:element minOccurs="0" name="ProjectId" type="ser:guid" />
-          <xs:element minOccurs="0" name="StartDate" type="xs:dateTime" />
-          <xs:element minOccurs="0" name="Task" nillable="true" type="tns:Task" />
-          <xs:element minOccurs="0" name="TaskId" type="ser:guid" />
-          <xs:element minOccurs="0" name="TaskStatus" nillable="true" type="tns:TaskStatus" />
-          <xs:element minOccurs="0" name="TaskStatusId" type="ser:guid" />
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:element name="MilestoneTask" nillable="true" type="tns:MilestoneTask" />
-  <xs:complexType name="Task">
-    <xs:complexContent mixed="false">
-      <xs:extension xmlns:q13="http://schemas.datacontract.org/2004/07/Acerodon.Model.Interface" base="q13:ITask">
-        <xs:sequence />
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:element name="Task" nillable="true" type="tns:Task" />
-  <xs:complexType name="TaskStatus">
-    <xs:complexContent mixed="false">
-      <xs:extension xmlns:q14="http://schemas.datacontract.org/2004/07/Acerodon.Model.Interface" base="q14:IEntity">
-        <xs:sequence>
-          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:element name="TaskStatus" nillable="true" type="tns:TaskStatus" />
+  <xs:element name="ArrayOfCompanyCustomer" nillable="true" type="tns:ArrayOfCompanyCustomer" />
 </xs:schema>

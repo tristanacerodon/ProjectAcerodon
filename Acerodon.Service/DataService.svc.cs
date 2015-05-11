@@ -15,7 +15,7 @@ namespace Acerodon.Service
     public class DataService
     {
         ProjectContext context = new ProjectContext();
-
+        
         [OperationContract]
         public AcerodonDataContract Get(AcerodonDataContract contract, Query query)
         {         
@@ -31,14 +31,13 @@ namespace Acerodon.Service
                       
             
         }
-
+        
         private void Fill(AcerodonDataContract contract, Query query)
         {
 
             dynamic obj = GenericEntity.CreateInstanceDynamic(context, contract.TypeName);
             contract.ItemList = new List<object>(obj.Get(query));
-
-        }
+       }
     }
 
 }
