@@ -23,12 +23,11 @@
                     <MenuItem Header="_Task" Click="Task_Click"/>
                     <MenuItem Header="_TaskStatus" Click="TaskStatus_Click"/>
                     <MenuItem Header="_Project" Click="Project_Click"/>
-                    
+
                 </MenuItem>
             </Menu>
             <StackPanel></StackPanel>
         </DockPanel>
-        
     </Grid>
     
 </Window>

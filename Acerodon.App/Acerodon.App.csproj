@@ -157,6 +157,10 @@
       <Project>{710aaa3c-e902-499a-880a-0e9e73b354a1}</Project>
       <Name>Acerodon.Model</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Acerodon.Repository\Acerodon.Repository.csproj">
+      <Project>{e0e674a6-62d9-4893-bee7-666847dffb8f}</Project>
+      <Name>Acerodon.Repository</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Common\" />
