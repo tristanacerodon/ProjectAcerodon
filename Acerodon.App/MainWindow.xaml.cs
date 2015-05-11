@@ -2,6 +2,7 @@
 using Acerodon.Model;
 using System.Windows;
 using System.Linq;
+using System;
 
 namespace Acerodon.App
 {
@@ -15,74 +16,88 @@ namespace Acerodon.App
             InitializeComponent();
         }
 
-        private void Open_Click(object sender , RoutedEventArgs e) {
-          
+        private void Open_Click(object sender, RoutedEventArgs e)
+        {
+
 
         }
-        private void Close_Click(object sender , RoutedEventArgs e) {
-            
+        private void Close_Click(object sender, RoutedEventArgs e)
+        {
+
 
         }
-        private void Save_Click(object sender , RoutedEventArgs e) {
-          
-        }
-        private void User_Click(object sender , RoutedEventArgs e) {
-            var frm = new GenericListForm<User>();
-            frm.Show();
+        private void Save_Click(object sender, RoutedEventArgs e)
+        {
 
         }
-        private void Company_Click(object sender , RoutedEventArgs e) {
-            var frm = new GenericListForm<Company>();
-            frm.Show();
+        private void User_Click(object sender, RoutedEventArgs e)
+        {
+            var frm = new GenericListForm<User>(o => new { o.Name });
+            frm.ShowDialog();
 
         }
-        private void Employee_Click(object sender , RoutedEventArgs e) {
-            var frm = new GenericListForm<Employee>();
-            frm.Show();
+        private void Company_Click(object sender, RoutedEventArgs e)
+        {
+            var frm = new GenericListForm<Company>(o => new { o.Name });
+            frm.ShowDialog();
 
         }
-        private void Customer_Click(object sender , RoutedEventArgs e) {
-            var frm = new GenericListForm<Customer>();
-            frm.Show();
+        private void Employee_Click(object sender, RoutedEventArgs e)
+        {
+            var frm = new GenericListForm<Employee>(o => new { o.Name });
+            frm.ShowDialog();
 
         }
-        private void CompanyPosition_Click(object sender , RoutedEventArgs e) {
+        private void Customer_Click(object sender, RoutedEventArgs e)
+        {
+            var frm = new GenericListForm<Customer>(o => new { o.Name });
+            frm.ShowDialog();
+
+        }
+        private void CompanyPosition_Click(object sender, RoutedEventArgs e)
+        {
             var frm = new GenericListForm<CompanyPosition>();
-            frm.Show();
+            frm.ShowDialog();
 
         }
-        private void CompanyCustomer_Click(object sender , RoutedEventArgs e) {
+        private void CompanyCustomer_Click(object sender, RoutedEventArgs e)
+        {
             var frm = new GenericListForm<CompanyCustomer>();
-            frm.Show();
+            frm.ShowDialog();
 
         }
-        private void Project_Click(object sender , RoutedEventArgs e) {
+        private void Project_Click(object sender, RoutedEventArgs e)
+        {
             var frm = new GenericListForm<Project>();
-            frm.Show();
+            frm.ShowDialog();
 
         }
 
-        private void EmployeeRole_Click(object sender , RoutedEventArgs e) {
+        private void EmployeeRole_Click(object sender, RoutedEventArgs e)
+        {
             var frm = new GenericListForm<EmployeeRole>();
-            frm.Show();
+            frm.ShowDialog();
 
         }
-        private void Milestone_Click(object sender , RoutedEventArgs e) {
+        private void Milestone_Click(object sender, RoutedEventArgs e)
+        {
             var frm = new GenericListForm<Milestone>();
-            frm.Show();
+            frm.ShowDialog();
 
         }
-        private void Task_Click(object sender , RoutedEventArgs e) {
-            var frm = new GenericListForm<Task>();
-            frm.Show();
+        private void Task_Click(object sender, RoutedEventArgs e)
+        {
+            var frm = new GenericListForm<Task>(o => new { o.Name, o.Description });
+            frm.ShowDialog();
 
         }
-        private void TaskStatus_Click(object sender , RoutedEventArgs e) {
+        private void TaskStatus_Click(object sender, RoutedEventArgs e)
+        {
             var frm = new GenericListForm<TaskStatus>();
-            frm.Show();
+            frm.ShowDialog();
 
         }
 
-      
+
     }
 }
