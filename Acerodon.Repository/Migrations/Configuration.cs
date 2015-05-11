@@ -176,43 +176,46 @@ namespace Acerodon.Repository.Migrations
             {
                 Id = Guid.Parse("ADD999E2-6097-441A-B4FF-17CA84089597"),
                 Name = "Task A",
+                Description = "Task A Description",
                 StartDate = seedDate,
+                EndDate = seedDate.AddMonths(3),
                 Employee = employeeA,
                 TaskStatus = done,
                 CreatedBy = admin,
                 ModifiedBy = admin,
                 CreatedDate = seedDate,
                 ModifiedDate = seedDate,
-                IsActive = true,
-                EndDate = seedDate.AddMonths(3),
+                IsActive = true
             };
             var taskB = new Task()
             {
                 Id = Guid.Parse("F10CD3D6-79D2-46DC-9A5F-76BD6F4C328B"),
                 Name = "Task B",
+                Description = " Task B Description",
                 StartDate = seedDate,
+                EndDate = seedDate.AddMonths(3),
                 Employee = employeeB,
                 TaskStatus = ongoing,
                 CreatedBy = admin,
                 ModifiedBy = admin,
                 CreatedDate = seedDate,
                 ModifiedDate = seedDate,
-                IsActive = true,
-                EndDate = seedDate.AddMonths(3),
+                IsActive = true
             };
             var taskC = new Task()
             {
                 Id = Guid.Parse("0C7659FB-15D8-4C14-95D1-D215C4DE2C66"),
                 Name = "Task C",
+                Description = "Task C Description",
                 StartDate = seedDate,
+                EndDate = seedDate.AddMonths(3),
                 Employee = employeeC,
                 TaskStatus = onhold,
                 CreatedBy = admin,
                 ModifiedBy = admin,
                 CreatedDate = seedDate,
                 ModifiedDate = seedDate,
-                IsActive = true,
-                EndDate = seedDate.AddMonths(3),
+                IsActive = true
             };
             #endregion
             #region Milestones
@@ -220,7 +223,9 @@ namespace Acerodon.Repository.Migrations
             {
                 Id = Guid.Parse("D0560606-2E41-4A8F-90FA-067658B832E2"),
                 Name = "Milestone A",
+                Description = "Milestone A Description",
                 StartDate = seedDate,
+                EndDate = seedDate.AddMonths(3),
                 Tasks = new Task[]
                 {
                     taskA,
@@ -231,13 +236,14 @@ namespace Acerodon.Repository.Migrations
                 CreatedDate = seedDate,
                 ModifiedDate = seedDate,
                 IsActive = true,
-                EndDate = seedDate.AddMonths(3),
             };
             var milestoneB = new Milestone()
             {
                 Id = Guid.Parse("582280C8-3A1A-4D7E-9F19-E529F92616AB"),
                 Name = "Milestone B",
+                Description = "Milestone B Description",
                 StartDate = seedDate,
+                EndDate = seedDate.AddMonths(3),
                 Tasks = new Task[]
                 {
                     taskC
@@ -250,8 +256,7 @@ namespace Acerodon.Repository.Migrations
                 ModifiedBy = admin,
                 CreatedDate = seedDate,
                 ModifiedDate = seedDate,
-                IsActive = true,
-                EndDate = seedDate.AddMonths(3),
+                IsActive = true
             };
             #endregion
             #region Projects
