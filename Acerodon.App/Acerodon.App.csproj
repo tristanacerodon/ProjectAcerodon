@@ -94,6 +94,7 @@
   <ItemGroup>
     <None Include="Properties\DataSources\Acerodon.GenericDataContract.Types.AcerodonDataContract.datasource" />
     <AppDesigner Include="Properties\" />
+    <None Include="Properties\DataSources\Acerodon.GenericDataContract.Types.ItemDataContract.datasource" />
     <None Include="Properties\DataSources\Acerodon.GenericDataContract.Types.ListDataContract.datasource" />
     <None Include="Service References\AcerodonService\DataService.wsdl" />
     <None Include="Service References\AcerodonService\DataService.xsd">
@@ -108,13 +109,13 @@
     <None Include="Service References\AcerodonService\DataService3.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\AcerodonService\DataService31.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\AcerodonService\DataService32.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Service References\AcerodonService\DataService4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AcerodonService\DataService5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AcerodonService\DataService6.xsd">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
@@ -123,24 +124,6 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadataStorage Include="Service References\AcerodonService\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\AcerodonService\DataService.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\AcerodonService\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\AcerodonService\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\AcerodonService\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Acerodon.GenericDataContract.Types\Acerodon.GenericDataContract.Types.csproj">
@@ -175,6 +158,24 @@
     <Resource Include="Contents\Images\cut.png" />
     <Resource Include="Contents\Images\disk.png" />
     <Resource Include="Contents\Images\save_as.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\AcerodonService\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\AcerodonService\DataService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\AcerodonService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\AcerodonService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\AcerodonService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,37 +1,35 @@
 ﻿using Acerodon.Model.Interface;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.Serialization;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace Acerodon.GenericDataContract.Types
-{
+namespace Acerodon.GenericDataContract.Types {
+
     [DataContract]
     [KnownType("GetKnownTypes")]
-    public class ListDataContract
-    {
+    public class ItemDataContract {
 
         [DataMember]
-        private List<object> _ItemList;
+        private object _Item;
         [DataMember]
         public string TypeName;
         [DataMember]
         public string TypeNamespace;
 
 
-        private static Type[] GetKnownTypes()
-        {
+        private static Type[] GetKnownTypes() {
 
             Assembly a = Assembly.GetAssembly(typeof(IEntity));
             return a.GetTypes().ToArray();
 
         }
 
-        public static ListDataContract Create(Type type)
-        {
-            var dc = new ListDataContract();
+        public static ItemDataContract Create(Type type) {
+            var dc = new ItemDataContract();
             Type t = type;
 
             dc.TypeName = t.Name;
@@ -40,9 +38,8 @@ namespace Acerodon.GenericDataContract.Types
             return dc;
         }
 
-        public static ListDataContract Create<T>()
-        {
-            var dc = new ListDataContract();
+        public static ItemDataContract Create<T>() {
+            var dc = new ItemDataContract();
             Type t = typeof(T);
 
             dc.TypeName = t.Name;
@@ -51,26 +48,18 @@ namespace Acerodon.GenericDataContract.Types
             return dc;
         }
 
-        public List<object> ItemList
-        {
-            get { return _ItemList; }
-            set { _ItemList = value; }
+        public object Item {
+            get { return _Item; }
+            set { _Item = value; }
         }
 
-        public T[] GetList<T>()
-        {
-            return ItemList.Cast<T>().ToArray();
+        public T Get<T>() {
+            return (T)Item;
         }
 
-
-        public dynamic[] GetList()
-        {
-
-            return ItemList.Cast<dynamic>().ToArray();
-
+        public dynamic Get() {
+            return (dynamic)Item;
         }
-
 
     }
-
 }

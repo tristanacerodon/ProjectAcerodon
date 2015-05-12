@@ -4,16 +4,15 @@ using Acerodon.App.Helper;
 using Acerodon.GenericDataContract.Types;
 using Acerodon.Model;
 using Acerodon.Model.Interface;
+using Acerodon.Repository;
 using System;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Input;
 
-namespace Acerodon.App.Interfaces
-{
+namespace Acerodon.App.Interfaces {
     public class GridViewModel<T> : IGridViewModel
-        where T : IEntity, new()
-    {
+        where T : IEntity , new() {
 
         private DataServiceClient _service = new DataServiceClient();
         private ListForm _listForm;
@@ -21,66 +20,56 @@ namespace Acerodon.App.Interfaces
         private int _page = 1;
         private int _rows = 10;
         private int _pages = 0;
+        private Func<T , object> predicate;
+
+        public GridViewModel(Func<T , object> predicate) {
+            this.predicate = predicate;
+        }
 
 
-        public DataServiceClient Service
-        {
-            get
-            {
+        public DataServiceClient Service {
+            get {
                 return _service;
             }
         }
-        public ListForm ListForm
-        {
-            get
-            {
+        public ListForm ListForm {
+            get {
                 return _listForm;
             }
-            set
-            {
+            set {
                 _listForm = value;
                 Refresh();
             }
 
         }
-        public List<T> Items
-        {
-            get
-            {
+        public List<T> Items {
+            get {
                 return _items;
             }
         }
-        public int Page
-        {
-            get
-            {
+        public int Page {
+            get {
                 return _page;
             }
-            set
-            {
+            set {
 
                 _page = value < 1 ? 1 : value;
                 Refresh();
 
             }
         }
-        public int Rows
-        {
-            get
-            {
+        public int Rows {
+            get {
                 return _rows;
             }
-            set
-            {
+            set {
                 _rows = value;
                 Refresh();
 
             }
         }
-        public int Pages
-        {
-            get
-            {
+        public int Pages {
+            get {
                 return _pages;
             }
         }
@@ -94,53 +83,42 @@ namespace Acerodon.App.Interfaces
         public ICommand DeleteCommand { get { return new Command(Delete); } }
         public ICommand RefreshCommand { get { return new Command(Refresh); } }
 
-        private void Back()
-        {
+        private void Back() {
             Page--;
         }
-        private void Next()
-        {
+        private void Next() {
             Page++;
         }
-        private void First()
-        {
+        private void First() {
             Page = 1;
         }
-        private void Last()
-        {
+        private void Last() {
             Page = Pages;
         }
-        private void Add()
-        {
+        private void Add() {
 
             var entry = new T();
-            if (GenericEntryForm.Create(entry).ShowDialog() == true)
-            {
+            if (GenericEntryForm.Create(entry, predicate).ShowDialog() == true) {
                 Items.Add(entry);
                 ResetBindings();
             }
 
         }
-        private void Edit()
-        {
+        private void Edit() {
             if (_listForm.lstItems.SelectedItem != null)
-                if (GenericEntryForm.Create((T)_listForm.lstItems.SelectedItem).ShowDialog() == true)
-                {
+                if (GenericEntryForm.Create((T)_listForm.lstItems.SelectedItem, predicate).ShowDialog() == true) {
 
                 }
 
         }
-        private void Delete()
-        {
+        private void Delete() {
             if (_listForm.lstItems.SelectedItem != null)
-                if (MessageBox.Show("Delete Selected Item?", "Delete", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
-                {
+                if (MessageBox.Show("Delete Selected Item?" , "Delete" , MessageBoxButton.YesNo) == MessageBoxResult.Yes) {
                     Items.Remove((T)_listForm.lstItems.SelectedItem);
                     ResetBindings();
                 }
         }
-        private void Refresh()
-        {
+        private void Refresh() {
             Query query = new Query();
             query.Page = Page;
             query.Rows = Rows;
@@ -151,8 +129,7 @@ namespace Acerodon.App.Interfaces
 
         }
 
-        private void ResetBindings()
-        {
+        private void ResetBindings() {
             _listForm.DataContext = null;
             _listForm.DataContext = this;
 
@@ -160,11 +137,10 @@ namespace Acerodon.App.Interfaces
 
         }
 
-        private T[] Get(Query query)
-        {
+        private T[] Get(Query query) {
 
             ListDataContract datacontract = ListDataContract.Create<T>();
-            datacontract = Service.Get(datacontract, query);
+            datacontract = Service.GetList(datacontract , query);
             return datacontract.GetList<T>();
 
         }

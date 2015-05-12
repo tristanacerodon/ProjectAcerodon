@@ -50,6 +50,10 @@ namespace Acerodon.Repository
         {
             return db.Set<T>().OrderBy(o => o.Id).Skip(query.Skip).Take(query.Rows);
         }
+
+        public T GetById(Guid id) {
+            return db.Set<T>().Find(id);
+        }
         
     }
 }

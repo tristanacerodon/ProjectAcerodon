@@ -11,11 +11,17 @@
       <xsd:import schemaLocation="http://localhost:29587/DataService.svc?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/Acerodon.Repository" />
     </xsd:schema>
   </wsdl:types>
-  <wsdl:message name="DataService_Get_InputMessage">
-    <wsdl:part name="parameters" element="tns:Get" />
+  <wsdl:message name="DataService_GetList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetList" />
   </wsdl:message>
-  <wsdl:message name="DataService_Get_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetResponse" />
+  <wsdl:message name="DataService_GetList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetListResponse" />
+  </wsdl:message>
+  <wsdl:message name="DataService_GetItem_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetItem" />
+  </wsdl:message>
+  <wsdl:message name="DataService_GetItem_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetItemResponse" />
   </wsdl:message>
   <wsdl:message name="DataService_Add_InputMessage">
     <wsdl:part name="parameters" element="tns:Add" />
@@ -24,9 +30,13 @@
     <wsdl:part name="parameters" element="tns:AddResponse" />
   </wsdl:message>
   <wsdl:portType name="DataService">
-    <wsdl:operation name="Get">
-      <wsdl:input wsaw:Action="http://tempuri.org/DataService/Get" message="tns:DataService_Get_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/DataService/GetResponse" message="tns:DataService_Get_OutputMessage" />
+    <wsdl:operation name="GetList">
+      <wsdl:input wsaw:Action="http://tempuri.org/DataService/GetList" message="tns:DataService_GetList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/DataService/GetListResponse" message="tns:DataService_GetList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetItem">
+      <wsdl:input wsaw:Action="http://tempuri.org/DataService/GetItem" message="tns:DataService_GetItem_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/DataService/GetItemResponse" message="tns:DataService_GetItem_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="Add">
       <wsdl:input wsaw:Action="http://tempuri.org/DataService/Add" message="tns:DataService_Add_InputMessage" />
@@ -35,8 +45,17 @@
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_DataService" type="tns:DataService">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="Get">
-      <soap:operation soapAction="http://tempuri.org/DataService/Get" style="document" />
+    <wsdl:operation name="GetList">
+      <soap:operation soapAction="http://tempuri.org/DataService/GetList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetItem">
+      <soap:operation soapAction="http://tempuri.org/DataService/GetItem" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

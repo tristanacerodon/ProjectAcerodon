@@ -9,35 +9,42 @@ using Acerodon.Model;
 using Acerodon.Model.Interface;
 using System.ServiceModel;
 
-namespace Acerodon.Service
-{
+namespace Acerodon.Service {
     [ServiceContract]
-    public class DataService
-    {
+    public class DataService {
         ProjectContext context = new ProjectContext();
-        
+
         [OperationContract]
-        public ListDataContract Get(ListDataContract contract, Query query)
-        {         
-            Fill(contract, query);
+        public ListDataContract GetList(ListDataContract contract , Query query) {
+            Fill(contract , query);
             return contract;
         }
 
         [OperationContract]
-        public bool Add(IEntity entry)     
-        {
-
-            return entry.Save(context);
-                      
-            
+        public ItemDataContract GetItem(ItemDataContract contract , Guid id) {
+            Fill(contract , id);
+            return contract;
         }
 
-        private void Fill(ListDataContract contract, Query query)
-        {
+        [OperationContract]
+        public bool Add(IEntity entry) {
 
-            dynamic obj = GenericEntity.CreateInstanceDynamic(context, contract.TypeName);
+            return entry.Save(context);
+
+
+        }
+
+        private void Fill(ListDataContract contract , Query query) {
+
+            dynamic obj = GenericEntity.CreateInstanceDynamic(context , contract.TypeName);
             contract.ItemList = new List<object>(obj.Get(query));
-       }
+        }
+
+        private void Fill(ItemDataContract contract , Guid id) {
+
+            dynamic obj = GenericEntity.CreateInstanceDynamic(context , contract.TypeName);
+            contract.Item = (object)obj.GetById(id);
+        }
     }
 
 }

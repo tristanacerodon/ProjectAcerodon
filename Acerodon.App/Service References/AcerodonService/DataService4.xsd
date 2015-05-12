@@ -1,35 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://localhost:29587/DataService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Acerodon.GenericDataContract.Types" />
-  <xs:import schemaLocation="http://localhost:29587/DataService.svc?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/Acerodon.Repository" />
-  <xs:import schemaLocation="http://localhost:29587/DataService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/Acerodon.Model.Interface" />
-  <xs:element name="Get">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/Acerodon.GenericDataContract.Types" minOccurs="0" name="contract" nillable="true" type="q1:ListDataContract" />
-        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Acerodon.Repository" minOccurs="0" name="query" nillable="true" type="q2:Query" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/Acerodon.GenericDataContract.Types" minOccurs="0" name="GetResult" nillable="true" type="q3:ListDataContract" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="Add">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/Acerodon.Model.Interface" minOccurs="0" name="entry" nillable="true" type="q4:IEntity" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="AddResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="AddResult" type="xs:boolean" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
+<xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/Acerodon.Model.Interface" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Acerodon.Model.Interface" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:29587/DataService.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/Acerodon.Model" />
+  <xs:import schemaLocation="http://localhost:29587/DataService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:complexType name="IEntity">
+    <xs:sequence>
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/Acerodon.Model" minOccurs="0" name="CreatedBy" nillable="true" type="q1:User" />
+      <xs:element minOccurs="0" name="CreatedById" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="CreatedDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Id" type="ser:guid" />
+      <xs:element minOccurs="0" name="IsActive" type="xs:boolean" />
+      <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Acerodon.Model" minOccurs="0" name="ModifiedBy" nillable="true" type="q2:User" />
+      <xs:element minOccurs="0" name="ModifiedById" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="ModifiedDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="IEntity" nillable="true" type="tns:IEntity" />
+  <xs:complexType name="ICompany">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:IEntity">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ICompany" nillable="true" type="tns:ICompany" />
+  <xs:complexType name="IActivity">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:IEntity">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="EndDate" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="StartDate" type="xs:dateTime" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="IActivity" nillable="true" type="tns:IActivity" />
+  <xs:complexType name="IPerson">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:IEntity">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+          <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/Acerodon.Model" minOccurs="0" name="Gender" nillable="true" type="q3:Gender" />
+          <xs:element minOccurs="0" name="GenderId" type="ser:guid" />
+          <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="MiddleName" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="IPerson" nillable="true" type="tns:IPerson" />
 </xs:schema>

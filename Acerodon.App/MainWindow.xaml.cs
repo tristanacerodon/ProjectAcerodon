@@ -40,7 +40,7 @@ namespace Acerodon.App
         }
         private void User_Click(object sender, RoutedEventArgs e)
         {
-            var frm = new GenericListForm<User>(o => new { o.Name, o.CreatedBy, o.IsActive });
+            var frm = new GenericListForm<User>(o => new { o.Name, o.CreatedBy,o.ModifiedBy, o.IsActive });
             frm.ShowDialog();
 
         }
@@ -64,45 +64,39 @@ namespace Acerodon.App
         }
         private void CompanyPosition_Click(object sender, RoutedEventArgs e)
         {
-            var frm = new GenericListForm<CompanyPosition>();
-            frm.ShowDialog();
+ 
 
         }
         private void CompanyCustomer_Click(object sender, RoutedEventArgs e)
         {
-            var frm = new GenericListForm<CompanyCustomer>();
-            frm.ShowDialog();
+
 
         }
         private void Project_Click(object sender, RoutedEventArgs e)
         {
-            var frm = new GenericListForm<Project>();
-            frm.ShowDialog();
+
 
         }
 
         private void EmployeeRole_Click(object sender, RoutedEventArgs e)
         {
-            var frm = new GenericListForm<EmployeeRole>();
-            frm.ShowDialog();
+
 
         }
         private void Milestone_Click(object sender, RoutedEventArgs e)
         {
-            var frm = new GenericListForm<Milestone>();
-            frm.ShowDialog();
+
 
         }
         private void Task_Click(object sender, RoutedEventArgs e)
         {
-            var frm = new GenericListForm<Task>(o => new { o.Name, o.Description });
+            var frm = new GenericListForm<Task>(o => new { o.Name, o.Description,o.EmployeeId });
             frm.ShowDialog();
 
         }
         private void TaskStatus_Click(object sender, RoutedEventArgs e)
         {
-            var frm = new GenericListForm<TaskStatus>();
-            frm.ShowDialog();
+      
 
         }
 

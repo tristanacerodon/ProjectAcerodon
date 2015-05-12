@@ -1,5 +1,8 @@
-﻿using Acerodon.App.Interfaces;
+﻿using Acerodon.App.AcerodonService;
+using Acerodon.App.Interfaces;
+using Acerodon.GenericDataContract.Types;
 using Acerodon.Model.Interface;
+using Acerodon.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,31 +14,47 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 
-namespace Acerodon.App.Helper
-{
-    
+namespace Acerodon.App.Helper {
+
     class GenericListForm<T> : ListForm
-        where T : IEntity, new()
-    {
+        where T : IEntity , new() {
 
         public GridViewModel<T> ViewModel { get; set; }
 
         public List<GridViewColumn> Columns { get; set; }
 
 
-        public GenericListForm(Func<T,object> predicate)
-        {
+        public GenericListForm(Func<T , object> predicate) {
             InitializeComponent();
             Columns = new List<GridViewColumn>();
-            ViewModel = new GridViewModel<T>();
+            ViewModel = new GridViewModel<T>(predicate);
 
             var properties = predicate(new T()).GetType().GetProperties();
+            var virtualproperties = typeof(T).GetProperties().Where(p => p.GetMethod.IsVirtual);
 
-            foreach (var property in properties)
-            {
-                GridViewColumn column = new GridViewColumn()
-                {
-                    Header = property.Name,
+            foreach (var property in properties) {
+
+                TypeCode typeCode = Type.GetTypeCode(property.PropertyType);
+                if (typeCode == TypeCode.Object && property.Name != "Id") {
+                    if (property.PropertyType == typeof(Guid)) {
+                       
+                        var vproperties = virtualproperties.Where(o => property.Name.StartsWith(o.PropertyType.Name));
+                        if (vproperties.Count() == 0)
+                            continue;
+
+                        var vproperty = vproperties.First();
+
+                        DataServiceClient service = new DataServiceClient();
+
+                        ItemDataContract datacontract = ItemDataContract.Create(vproperty.PropertyType);
+                        //datacontract = service.GetItem(datacontract , query);
+                        //dynamic[] items = datacontract.GetList();
+                    }
+                } else {
+
+                }
+                GridViewColumn column = new GridViewColumn() {
+                    Header = property.Name ,
                     DisplayMemberBinding = new Binding(property.Name)
                 };
 
@@ -51,55 +70,23 @@ namespace Acerodon.App.Helper
             ViewModel.ListForm = this;
         }
 
-        public GenericListForm()
-        {
+        private void BindControls() {
 
-            InitializeComponent();
-
-            Columns = new List<GridViewColumn>();
-            ViewModel = new GridViewModel<T>();
-                        
-            var properties = typeof(T).GetProperties().Where(p => !p.GetMethod.IsVirtual);
-            foreach (var property in properties)
-            {
-                GridViewColumn column = new GridViewColumn()
-                     {
-                         Header = property.Name,
-                         DisplayMemberBinding = new Binding(property.Name)
-                     };
-
-                Columns.Add(column);
-                grdItems.Columns.Add(column);
-
-            }
-
-            BindControls();
-
-            DataContext = ViewModel;
-            ViewModel.ListForm = this;
-        }
-
-        private void BindControls()
-        {
-
-            lstItems.SetBinding(ListView.ItemsSourceProperty,
-                new Binding
-                {
-                    Path = new PropertyPath("Items"),
+            lstItems.SetBinding(ListView.ItemsSourceProperty ,
+                new Binding {
+                    Path = new PropertyPath("Items") ,
                     NotifyOnTargetUpdated = true
                 });
 
-            txtPage.SetBinding(TextBox.TextProperty,
-                new Binding
-                {
-                    Path = new PropertyPath("Page"),
+            txtPage.SetBinding(TextBox.TextProperty ,
+                new Binding {
+                    Path = new PropertyPath("Page") ,
                     NotifyOnTargetUpdated = true
                 });
 
-            txtPages.SetBinding(Label.ContentProperty,
-                new Binding
-                {
-                    Path = new PropertyPath("Pages"),
+            txtPages.SetBinding(Label.ContentProperty ,
+                new Binding {
+                    Path = new PropertyPath("Pages") ,
                     NotifyOnTargetUpdated = true
                 });
 

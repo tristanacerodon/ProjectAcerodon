@@ -19,11 +19,12 @@ namespace Acerodon.App.Helper
     public static class GenericEntryForm
     {
 
-        public static GenericEntryForm<T> Create<T>(T entry)
+        public static GenericEntryForm<T> Create<T>(T entry,Func<T , object> predicate)
            where T : IEntity, new()
         {
-            return new GenericEntryForm<T>(entry);
+            return new GenericEntryForm<T>(entry , predicate);
         }
+
     }
 
     public class GenericEntryForm<T> : EntryForm
@@ -32,11 +33,13 @@ namespace Acerodon.App.Helper
 
         // public List<Control> controls = new List<Control>();
 
-        public GenericEntryForm(T entry)
+        public GenericEntryForm(T entry , Func<T , object> predicate)
         {
             DataContext = entry;
+             
+            var selProps = predicate(new T()).GetType().GetProperties(); 
 
-            var properties = typeof(T).GetProperties().Where(p => !p.GetMethod.IsVirtual);
+            var properties = typeof(T).GetProperties().Where(p => !p.GetMethod.IsVirtual && selProps.Where(o => o.Name == p.Name).Any());
             var virtualproperties = typeof(T).GetProperties().Where(p => p.GetMethod.IsVirtual);
 
             int position = 10;
@@ -48,9 +51,6 @@ namespace Acerodon.App.Helper
                 {
                     if (property.PropertyType == typeof(Guid))
                     {
-
-                        Guid propValue = (Guid)property.GetValue(entry, null);
-
                         var vproperties = virtualproperties.Where(o => property.Name.StartsWith(o.PropertyType.Name));
                         if (vproperties.Count() == 0) continue;
 
@@ -60,11 +60,11 @@ namespace Acerodon.App.Helper
 
                         ListDataContract datacontract = ListDataContract.Create(vproperty.PropertyType);
 
-                        AcerodonService.Query query = new AcerodonService.Query();
+                        Query query = new Query();
                         query.Page = 1;
                         query.Rows = 10;
 
-                        datacontract = service.Get(datacontract, query);
+                        datacontract = service.GetList(datacontract, query);
                         dynamic[] items = datacontract.GetList();
 
                         Label label = new Label()
@@ -82,7 +82,8 @@ namespace Acerodon.App.Helper
 
                         ctrl.DisplayMemberPath = "Name";
                         ctrl.SelectedValuePath = "Id";
-
+                        ctrl.IsEditable = true;
+   
                         foreach (var item in items)
                         {
                             ctrl.Items.Add(item);
@@ -106,7 +107,7 @@ namespace Acerodon.App.Helper
                     }
 
                 }
-                else
+                else if (property.Name != "Id")
                 {
                     Label label = new Label()
                     {
