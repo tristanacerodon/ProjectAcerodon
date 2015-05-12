@@ -39,6 +39,7 @@
     <Compile Include="Employee.cs" />
     <Compile Include="EmployeeRole.cs" />
     <Compile Include="EmploymentStatus.cs" />
+    <Compile Include="Filter.cs" />
     <Compile Include="Gender.cs" />
     <Compile Include="Interface\ICompany.cs" />
     <Compile Include="Company.cs" />
@@ -48,6 +49,8 @@
     <Compile Include="Interface\IActivity.cs" />
     <Compile Include="Milestone.cs" />
     <Compile Include="Project.cs" />
+    <Compile Include="Query.cs" />
+    <Compile Include="Sort.cs" />
     <Compile Include="Task.cs" />
     <Compile Include="TaskStatus.cs" />
     <Compile Include="User.cs" />

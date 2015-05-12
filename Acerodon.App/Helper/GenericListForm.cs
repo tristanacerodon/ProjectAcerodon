@@ -2,7 +2,6 @@
 using Acerodon.App.Interfaces;
 using Acerodon.GenericDataContract.Types;
 using Acerodon.Model.Interface;
-using Acerodon.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Acerodon.Repository
+namespace Acerodon.Model
 {
     public class Query
     {

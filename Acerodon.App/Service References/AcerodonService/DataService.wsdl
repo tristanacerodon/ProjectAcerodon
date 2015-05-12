@@ -8,7 +8,6 @@
       <xsd:import schemaLocation="http://localhost:29587/DataService.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
       <xsd:import schemaLocation="http://localhost:29587/DataService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/Acerodon.Model.Interface" />
       <xsd:import schemaLocation="http://localhost:29587/DataService.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/Acerodon.Model" />
-      <xsd:import schemaLocation="http://localhost:29587/DataService.svc?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/Acerodon.Repository" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="DataService_GetList_InputMessage">

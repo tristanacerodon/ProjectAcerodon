@@ -32,24 +32,24 @@ namespace Acerodon.App.AcerodonService {
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Acerodon.Model.TaskStatus))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Acerodon.Model.CompanyPosition))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Acerodon.Model.EmployeeRole))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Acerodon.Model.Filter))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Acerodon.Model.Company))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Acerodon.Model.CompanyCustomer[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Acerodon.Model.Query))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Acerodon.Model.Filter[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Acerodon.Model.Sort[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Acerodon.Model.Sort))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Acerodon.Model.Sort.SortOrder))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(object[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Acerodon.GenericDataContract.Types.ItemDataContract))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Acerodon.Model.Interface.IEntity))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Acerodon.Model.Interface.ICompany))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Acerodon.Model.Interface.IActivity))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Acerodon.Model.Interface.IPerson))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Acerodon.Repository.Query))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Acerodon.Repository.Filter[]))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Acerodon.Repository.Filter))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Acerodon.Repository.Sort[]))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Acerodon.Repository.Sort))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Acerodon.Repository.Sort.SortOrder))]
-        Acerodon.GenericDataContract.Types.ListDataContract GetList(Acerodon.GenericDataContract.Types.ListDataContract contract, Acerodon.Repository.Query query);
+        Acerodon.GenericDataContract.Types.ListDataContract GetList(Acerodon.GenericDataContract.Types.ListDataContract contract, Acerodon.Model.Query query);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/DataService/GetList", ReplyAction="http://tempuri.org/DataService/GetListResponse")]
-        System.Threading.Tasks.Task<Acerodon.GenericDataContract.Types.ListDataContract> GetListAsync(Acerodon.GenericDataContract.Types.ListDataContract contract, Acerodon.Repository.Query query);
+        System.Threading.Tasks.Task<Acerodon.GenericDataContract.Types.ListDataContract> GetListAsync(Acerodon.GenericDataContract.Types.ListDataContract contract, Acerodon.Model.Query query);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/DataService/GetItem", ReplyAction="http://tempuri.org/DataService/GetItemResponse")]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Acerodon.Model.User))]
@@ -68,20 +68,20 @@ namespace Acerodon.App.AcerodonService {
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Acerodon.Model.TaskStatus))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Acerodon.Model.CompanyPosition))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Acerodon.Model.EmployeeRole))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Acerodon.Model.Filter))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Acerodon.Model.Company))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Acerodon.Model.CompanyCustomer[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Acerodon.Model.Query))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Acerodon.Model.Filter[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Acerodon.Model.Sort[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Acerodon.Model.Sort))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Acerodon.Model.Sort.SortOrder))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(object[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Acerodon.GenericDataContract.Types.ListDataContract))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Acerodon.Model.Interface.IEntity))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Acerodon.Model.Interface.ICompany))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Acerodon.Model.Interface.IActivity))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Acerodon.Model.Interface.IPerson))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Acerodon.Repository.Query))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Acerodon.Repository.Filter[]))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Acerodon.Repository.Filter))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Acerodon.Repository.Sort[]))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Acerodon.Repository.Sort))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Acerodon.Repository.Sort.SortOrder))]
         Acerodon.GenericDataContract.Types.ItemDataContract GetItem(Acerodon.GenericDataContract.Types.ItemDataContract contract, System.Guid id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/DataService/GetItem", ReplyAction="http://tempuri.org/DataService/GetItemResponse")]
@@ -138,11 +138,11 @@ namespace Acerodon.App.AcerodonService {
                 base(binding, remoteAddress) {
         }
         
-        public Acerodon.GenericDataContract.Types.ListDataContract GetList(Acerodon.GenericDataContract.Types.ListDataContract contract, Acerodon.Repository.Query query) {
+        public Acerodon.GenericDataContract.Types.ListDataContract GetList(Acerodon.GenericDataContract.Types.ListDataContract contract, Acerodon.Model.Query query) {
             return base.Channel.GetList(contract, query);
         }
         
-        public System.Threading.Tasks.Task<Acerodon.GenericDataContract.Types.ListDataContract> GetListAsync(Acerodon.GenericDataContract.Types.ListDataContract contract, Acerodon.Repository.Query query) {
+        public System.Threading.Tasks.Task<Acerodon.GenericDataContract.Types.ListDataContract> GetListAsync(Acerodon.GenericDataContract.Types.ListDataContract contract, Acerodon.Model.Query query) {
             return base.Channel.GetListAsync(contract, query);
         }
         

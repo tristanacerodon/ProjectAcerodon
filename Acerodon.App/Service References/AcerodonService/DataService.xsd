@@ -157,6 +157,13 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="EmployeeRole" nillable="true" type="tns:EmployeeRole" />
+  <xs:complexType name="Filter">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Value" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Filter" nillable="true" type="tns:Filter" />
   <xs:complexType name="Company">
     <xs:complexContent mixed="false">
       <xs:extension xmlns:q14="http://schemas.datacontract.org/2004/07/Acerodon.Model.Interface" base="q14:ICompany">
@@ -173,4 +180,39 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfCompanyCustomer" nillable="true" type="tns:ArrayOfCompanyCustomer" />
+  <xs:complexType name="Query">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Filters" nillable="true" type="tns:ArrayOfFilter" />
+      <xs:element minOccurs="0" name="Page" type="xs:int" />
+      <xs:element minOccurs="0" name="Rows" type="xs:int" />
+      <xs:element minOccurs="0" name="Sorts" nillable="true" type="tns:ArrayOfSort" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Query" nillable="true" type="tns:Query" />
+  <xs:complexType name="ArrayOfFilter">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Filter" nillable="true" type="tns:Filter" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfFilter" nillable="true" type="tns:ArrayOfFilter" />
+  <xs:complexType name="ArrayOfSort">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Sort" nillable="true" type="tns:Sort" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSort" nillable="true" type="tns:ArrayOfSort" />
+  <xs:complexType name="Sort">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Field" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Order" type="tns:Sort.SortOrder" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Sort" nillable="true" type="tns:Sort" />
+  <xs:simpleType name="Sort.SortOrder">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Ascending" />
+      <xs:enumeration value="Descending" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="Sort.SortOrder" nillable="true" type="tns:Sort.SortOrder" />
 </xs:schema>
