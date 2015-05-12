@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Input;
+using System.Linq;
 
 namespace Acerodon.App.Interfaces {
     public class GridViewModel<T> : IGridViewModel
@@ -122,7 +123,30 @@ namespace Acerodon.App.Interfaces {
             query.Page = Page;
             query.Rows = Rows;
             _items.Clear();
-            _items.AddRange(Get(query));
+
+            
+            T[] items = Get(query);
+
+            var selproperties = predicate(new T()).GetType().GetProperties();
+            var virtualproperties = typeof(T).GetProperties().Where(p => p.GetMethod.IsVirtual);
+
+            var displayproperties = virtualproperties.Where(o => selproperties.Where(p => p.Name.StartsWith(o.Name)).Any());
+
+
+            foreach(T item in items)
+            {
+                foreach(var prop in displayproperties)
+                {
+                    Guid id = (Guid)typeof(T).GetProperty(prop.Name + "Id").GetValue(item);
+                    
+                    var value = _service.GetItem(ItemDataContract.Create(prop.PropertyType),id).Get();                     
+
+                    typeof(T).GetProperty(prop.Name).SetValue(item,value);
+
+                }
+            }
+
+            _items.AddRange(items);            
 
             ResetBindings();
 

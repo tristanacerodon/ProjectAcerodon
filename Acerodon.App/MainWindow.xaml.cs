@@ -90,7 +90,7 @@ namespace Acerodon.App
         }
         private void Task_Click(object sender, RoutedEventArgs e)
         {
-            var frm = new GenericListForm<Task>(o => new { o.Name, o.Description,o.EmployeeId });
+            var frm = new GenericListForm<Task>(o => new { o.Name, o.Description, o.Employee });
             frm.ShowDialog();
 
         }

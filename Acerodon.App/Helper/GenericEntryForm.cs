@@ -38,7 +38,7 @@ namespace Acerodon.App.Helper
              
             var selProps = predicate(new T()).GetType().GetProperties(); 
 
-            var properties = typeof(T).GetProperties().Where(p => !p.GetMethod.IsVirtual && selProps.Where(o => o.Name == p.Name).Any());
+            var properties = typeof(T).GetProperties().Where(p => selProps.Where(o => o.Name == p.Name).Any());
             var virtualproperties = typeof(T).GetProperties().Where(p => p.GetMethod.IsVirtual);
 
             int position = 10;
@@ -48,7 +48,7 @@ namespace Acerodon.App.Helper
                 TypeCode typeCode = Type.GetTypeCode(property.PropertyType);
                 if (typeCode == TypeCode.Object && property.Name != "Id")
                 {
-                    if (property.PropertyType == typeof(Guid))
+                    if (property.PropertyType != typeof(Guid))
                     {
                         var vproperties = virtualproperties.Where(o => property.Name.StartsWith(o.PropertyType.Name));
                         if (vproperties.Count() == 0) continue;
@@ -75,7 +75,7 @@ namespace Acerodon.App.Helper
                         ctrl.SetBinding(ComboBox.SelectedValueProperty,
                                             new Binding
                                             {
-                                                Path = new PropertyPath(property.Name),
+                                                Path = new PropertyPath(property.Name + "Id"),
                                                 NotifyOnTargetUpdated = true
                                             });
 
