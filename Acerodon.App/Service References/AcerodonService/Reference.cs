@@ -273,10 +273,10 @@ namespace Acerodon.App.AcerodonService {
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Acerodon.App.AcerodonService.Sort[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Acerodon.App.AcerodonService.Sort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Acerodon.App.AcerodonService.Sort.SortOrder))]
-        Acerodon.GenericDataContract.Types.AcerodonDataContract Get(Acerodon.GenericDataContract.Types.AcerodonDataContract contract, Acerodon.App.AcerodonService.Query query);
+        Acerodon.GenericDataContract.Types.ListDataContract Get(Acerodon.GenericDataContract.Types.ListDataContract contract, Acerodon.App.AcerodonService.Query query);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/DataService/Get", ReplyAction="http://tempuri.org/DataService/GetResponse")]
-        System.Threading.Tasks.Task<Acerodon.GenericDataContract.Types.AcerodonDataContract> GetAsync(Acerodon.GenericDataContract.Types.AcerodonDataContract contract, Acerodon.App.AcerodonService.Query query);
+        System.Threading.Tasks.Task<Acerodon.GenericDataContract.Types.ListDataContract> GetAsync(Acerodon.GenericDataContract.Types.ListDataContract contract, Acerodon.App.AcerodonService.Query query);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/DataService/Add", ReplyAction="http://tempuri.org/DataService/AddResponse")]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Acerodon.Model.Category))]
@@ -329,11 +329,11 @@ namespace Acerodon.App.AcerodonService {
                 base(binding, remoteAddress) {
         }
         
-        public Acerodon.GenericDataContract.Types.AcerodonDataContract Get(Acerodon.GenericDataContract.Types.AcerodonDataContract contract, Acerodon.App.AcerodonService.Query query) {
+        public Acerodon.GenericDataContract.Types.ListDataContract Get(Acerodon.GenericDataContract.Types.ListDataContract contract, Acerodon.App.AcerodonService.Query query) {
             return base.Channel.Get(contract, query);
         }
         
-        public System.Threading.Tasks.Task<Acerodon.GenericDataContract.Types.AcerodonDataContract> GetAsync(Acerodon.GenericDataContract.Types.AcerodonDataContract contract, Acerodon.App.AcerodonService.Query query) {
+        public System.Threading.Tasks.Task<Acerodon.GenericDataContract.Types.ListDataContract> GetAsync(Acerodon.GenericDataContract.Types.ListDataContract contract, Acerodon.App.AcerodonService.Query query) {
             return base.Channel.GetAsync(contract, query);
         }
         

@@ -69,9 +69,6 @@
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Milestones.xaml.cs">
-      <DependentUpon>Milestones.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Service References\AcerodonService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -93,14 +90,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Milestones.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\DataSources\Acerodon.GenericDataContract.Types.AcerodonDataContract.datasource" />
     <AppDesigner Include="Properties\" />
+    <None Include="Properties\DataSources\Acerodon.GenericDataContract.Types.ListDataContract.datasource" />
     <None Include="Service References\AcerodonService\DataService.wsdl" />
     <None Include="Service References\AcerodonService\DataService.xsd">
       <SubType>Designer</SubType>

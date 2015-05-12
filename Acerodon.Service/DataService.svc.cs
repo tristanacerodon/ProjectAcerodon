@@ -17,7 +17,7 @@ namespace Acerodon.Service
         ProjectContext context = new ProjectContext();
         
         [OperationContract]
-        public AcerodonDataContract Get(AcerodonDataContract contract, Query query)
+        public ListDataContract Get(ListDataContract contract, Query query)
         {         
             Fill(contract, query);
             return contract;
@@ -31,8 +31,8 @@ namespace Acerodon.Service
                       
             
         }
-        
-        private void Fill(AcerodonDataContract contract, Query query)
+
+        private void Fill(ListDataContract contract, Query query)
         {
 
             dynamic obj = GenericEntity.CreateInstanceDynamic(context, contract.TypeName);

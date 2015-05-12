@@ -3,6 +3,8 @@ using Acerodon.Model;
 using System.Windows;
 using System.Linq;
 using System;
+using Acerodon.App.AcerodonService;
+using Acerodon.GenericDataContract.Types;
 
 namespace Acerodon.App
 {
@@ -18,7 +20,13 @@ namespace Acerodon.App
 
         private void Open_Click(object sender, RoutedEventArgs e)
         {
+            //DataServiceClient ds = new DataServiceClient();
+            
+            //ListDataContract ldc = ListDataContract.Create(typeof(Company));
 
+            //ldc = ds.Get(ldc, new Query() { Page = 1, Rows = 10 });
+
+            //dynamic[] items = ldc.GetList();
 
         }
         private void Close_Click(object sender, RoutedEventArgs e)
