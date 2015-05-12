@@ -30,13 +30,13 @@ namespace Acerodon.App.Helper {
 
             var properties = predicate(new T()).GetType().GetProperties();
             var virtualproperties = typeof(T).GetProperties().Where(p => p.GetMethod.IsVirtual);
-
+            //clear combobox filter
+            cboFilterName.Items.Clear();
             foreach (var property in properties) {
 
                 TypeCode typeCode = Type.GetTypeCode(property.PropertyType);
                 if (typeCode == TypeCode.Object && property.Name != "Id") {
                     if (property.PropertyType == typeof(Guid)) {
-                       
                         var vproperties = virtualproperties.Where(o => property.Name.StartsWith(o.PropertyType.Name));
                         if (vproperties.Count() == 0)
                             continue;
@@ -46,8 +46,8 @@ namespace Acerodon.App.Helper {
                         DataServiceClient service = new DataServiceClient();
 
                         ItemDataContract datacontract = ItemDataContract.Create(vproperty.PropertyType);
-                        //datacontract = service.GetItem(datacontract , query);
-                        //dynamic[] items = datacontract.GetList();
+                        //datacontract = service.GetItem(datacontract, query);
+                        //dynamic[] items = datacontract.Get();
                     }
                 } else {
 
@@ -57,12 +57,15 @@ namespace Acerodon.App.Helper {
                     DisplayMemberBinding = new Binding(property.Name)
                 };
 
+               
+                cboFilterName.Items.Add(property.Name);
+
                 Columns.Add(column);
                 grdItems.Columns.Add(column);
 
             }
-
-
+            //assign selected value
+            cboFilterName.SelectedIndex = 0;
             BindControls();
 
             DataContext = ViewModel;

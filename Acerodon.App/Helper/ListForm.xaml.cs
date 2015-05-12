@@ -20,5 +20,8 @@ namespace Acerodon.App.Helper
     public partial class ListForm : Window
     {
 
+        private void ComboBoxItem_Selected(object sender , RoutedEventArgs e) {
+
+        }
     }
 }
