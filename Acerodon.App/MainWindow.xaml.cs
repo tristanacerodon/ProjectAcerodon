@@ -32,7 +32,7 @@ namespace Acerodon.App
         }
         private void User_Click(object sender, RoutedEventArgs e)
         {
-            var frm = new GenericListForm<User>(o => new { o.Name });
+            var frm = new GenericListForm<User>(o => new { o.Name, o.CreatedBy, o.IsActive });
             frm.ShowDialog();
 
         }
