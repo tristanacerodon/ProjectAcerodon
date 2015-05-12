@@ -1,5 +1,6 @@
 ﻿using Acerodon.Model.Interface;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -9,7 +10,7 @@ namespace Acerodon.GenericDataContract.Types
 {
     [DataContract]
     [KnownType("GetKnownTypes")]
-    public class AcerodonDataContract
+    public class ListDataContract
     {
 
         [DataMember]
@@ -28,9 +29,20 @@ namespace Acerodon.GenericDataContract.Types
 
         }
 
-        public static AcerodonDataContract Create<T>()
+        public static ListDataContract Create(Type type)
         {
-            var dc = new AcerodonDataContract();
+            var dc = new ListDataContract();
+            Type t = type;
+
+            dc.TypeName = t.Name;
+            dc.TypeNamespace = t.Namespace;
+
+            return dc;
+        }
+
+        public static ListDataContract Create<T>()
+        {
+            var dc = new ListDataContract();
             Type t = typeof(T);
 
             dc.TypeName = t.Name;
@@ -41,13 +53,21 @@ namespace Acerodon.GenericDataContract.Types
 
         public List<object> ItemList
         {
-            get {return _ItemList;}
-            set { _ItemList = value; } 
+            get { return _ItemList; }
+            set { _ItemList = value; }
         }
 
         public T[] GetList<T>()
         {
             return ItemList.Cast<T>().ToArray();
+        }
+
+
+        public dynamic[] GetList()
+        {
+
+            return ItemList.Cast<dynamic>().ToArray();
+
         }
 
     }

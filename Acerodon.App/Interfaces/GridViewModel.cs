@@ -163,7 +163,7 @@ namespace Acerodon.App.Interfaces
         private T[] Get(Query query)
         {
 
-            AcerodonDataContract datacontract = AcerodonDataContract.Create<T>();
+            ListDataContract datacontract = ListDataContract.Create<T>();
             datacontract = Service.Get(datacontract, query);
             return datacontract.GetList<T>();
 

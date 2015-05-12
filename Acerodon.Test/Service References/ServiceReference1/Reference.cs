@@ -254,10 +254,10 @@ namespace Acerodon.Test.ServiceReference1 {
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Acerodon.Test.ServiceReference1.Sort[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Acerodon.Test.ServiceReference1.Sort))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Acerodon.Test.ServiceReference1.Sort.SortOrder))]
-        Acerodon.GenericDataContract.Types.AcerodonDataContract Get(Acerodon.GenericDataContract.Types.AcerodonDataContract contract, Acerodon.Test.ServiceReference1.Query query);
+        Acerodon.GenericDataContract.Types.ListDataContractrodon.GenericDataContract.Types.ListListListDataContractdon.Test.ServiceReference1.Query query);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/DataService/Get", ReplyAction="http://tempuri.org/DataService/GetResponse")]
-        System.Threading.Tasks.Task<Acerodon.GenericDataContract.Types.AcerodonDataContract> GetAsync(Acerodon.GenericDataContract.Types.AcerodonDataContract contract, Acerodon.Test.ServiceReference1.Query query);
+        System.Threading.Tasks.Task<Acerodon.GenericDataContract.Types.ListDataContractnc(Acerodon.GenericDataContract.Types.ListListListDataContractdon.Test.ServiceReference1.Query query);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -287,11 +287,11 @@ namespace Acerodon.Test.ServiceReference1 {
                 base(binding, remoteAddress) {
         }
         
-        public Acerodon.GenericDataContract.Types.AcerodonDataContract Get(Acerodon.GenericDataContract.Types.AcerodonDataContract contract, Acerodon.Test.ServiceReference1.Query query) {
+        public Acerodon.GenericDataContract.Types.ListDataContractrodon.GenericDataContract.Types.ListListListDataContractdon.Test.ServiceReference1.Query query) {
             return base.Channel.Get(contract, query);
         }
         
-        public System.Threading.Tasks.Task<Acerodon.GenericDataContract.Types.AcerodonDataContract> GetAsync(Acerodon.GenericDataContract.Types.AcerodonDataContract contract, Acerodon.Test.ServiceReference1.Query query) {
+        public System.Threading.Tasks.Task<Acerodon.GenericDataContract.Types.ListDataContractnc(Acerodon.GenericDataContract.Types.ListListListDataContractdon.Test.ServiceReference1.Query query) {
             return base.Channel.GetAsync(contract, query);
         }
     }
