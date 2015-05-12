@@ -29,29 +29,10 @@ namespace Acerodon.App.Helper {
             ViewModel = new GridViewModel<T>(predicate);
 
             var properties = predicate(new T()).GetType().GetProperties();
-            var virtualproperties = typeof(T).GetProperties().Where(p => p.GetMethod.IsVirtual);
 
             foreach (var property in properties) {
 
-                TypeCode typeCode = Type.GetTypeCode(property.PropertyType);
-                if (typeCode == TypeCode.Object && property.Name != "Id") {
-                    if (property.PropertyType == typeof(Guid)) {
-                       
-                        var vproperties = virtualproperties.Where(o => property.Name.StartsWith(o.PropertyType.Name));
-                        if (vproperties.Count() == 0)
-                            continue;
-
-                        var vproperty = vproperties.First();
-
-                        DataServiceClient service = new DataServiceClient();
-
-                        ItemDataContract datacontract = ItemDataContract.Create(vproperty.PropertyType);
-                        //datacontract = service.GetItem(datacontract , query);
-                        //dynamic[] items = datacontract.GetList();
-                    }
-                } else {
-
-                }
+                
                 GridViewColumn column = new GridViewColumn() {
                     Header = property.Name ,
                     DisplayMemberBinding = new Binding(property.Name)
