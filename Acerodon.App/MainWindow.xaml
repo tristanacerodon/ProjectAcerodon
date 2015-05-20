@@ -12,6 +12,7 @@
                     <MenuItem Header="_Save" Click="Save_Click"/>
                 </MenuItem>
                 <MenuItem Header="_Common">
+                    <MenuItem Header="_SearchForm" Click="SearchForm_Click"/>
                     <MenuItem Header="_User" Click="User_Click"/>
                     <MenuItem Header="_Company" Click="Company_Click"/>
                     <MenuItem Header="_Employee" Click="Employee_Click"/>

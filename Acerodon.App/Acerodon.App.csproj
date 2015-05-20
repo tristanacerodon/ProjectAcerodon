@@ -59,6 +59,10 @@
       <DependentUpon>EntryForm.xaml</DependentUpon>
     </Compile>
     <Compile Include="Helper\GenericEntryForm.cs" />
+    <Compile Include="Helper\GenericSearchForm.cs" />
+    <Compile Include="Helper\SearchForm.xaml.cs">
+      <DependentUpon>SearchForm.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Interfaces\GridViewModel.cs" />
     <Compile Include="Interfaces\IGridViewModel.cs" />
     <Compile Include="Helper\GenericListForm.cs" />
@@ -86,6 +90,10 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Helper\SearchForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

@@ -88,13 +88,21 @@ namespace Acerodon.App.Helper
                             ctrl.Items.Add(item);
                         }
 
-                        label.Margin = new Thickness(10, position, 0, 0);
+                        label.Margin = new Thickness(10 , position , 0 , 0);
                         label.VerticalAlignment = VerticalAlignment.Top;
                         label.HorizontalAlignment = HorizontalAlignment.Left;
 
-                        ctrl.Margin = new Thickness(125, position + 5, 10, 0);
+                        ctrl.Margin = new Thickness(125 , position + 5 , 10 , 0);
                         ctrl.VerticalAlignment = VerticalAlignment.Top;
                         ctrl.HorizontalAlignment = HorizontalAlignment.Stretch;
+
+
+                        Button btn = new Button();
+                        btn.Content = "...";
+                        btn.Width = 25;
+                        btn.Margin = new Thickness(125 , position + 5 , 10 , 0);
+                        btn.VerticalAlignment = VerticalAlignment.Top;
+                        btn.HorizontalAlignment = HorizontalAlignment.Right;
 
                         position += 25;
 

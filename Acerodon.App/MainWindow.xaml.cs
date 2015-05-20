@@ -29,6 +29,13 @@ namespace Acerodon.App
             //dynamic[] items = ldc.GetList();
 
         }
+        private void SearchForm_Click(object sender , RoutedEventArgs e)
+        {
+
+            var frm = new GenericSearchForm<Task>(o => new { o.Name , o.Description , o.Employee });
+            frm.ShowDialog();
+        }
+
         private void Close_Click(object sender, RoutedEventArgs e)
         {
 
